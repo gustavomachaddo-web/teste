@@ -1,0 +1,171 @@
+{
+  "clientProfile": {
+    "version": "1.0.0",
+    "description": "Estrutura de dados para perfil de cliente PF - Caso 6",
+    "schema": {
+      "id": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Identificador único do cliente"
+      },
+      "personalInfo": {
+        "type": "object",
+        "properties": {
+          "cpf": {
+            "type": "string",
+            "pattern": "^[0-9]{11}$",
+            "description": "CPF do cliente (apenas números)"
+          },
+          "fullName": {
+            "type": "string",
+            "minLength": 3,
+            "description": "Nome completo do cliente"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Data de nascimento (YYYY-MM-DD)"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email principal"
+          },
+          "phone": {
+            "type": "string",
+            "pattern": "^[0-9]{10,11}$",
+            "description": "Telefone celular"
+          }
+        },
+        "required": ["cpf", "fullName", "email", "phone"]
+      },
+      "financialProfile": {
+        "type": "object",
+        "properties": {
+          "monthlyNetIncome": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Renda líquida mensal em R$"
+          },
+          "consignableMargin": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Percentual de margem consignável (0-100)"
+          },
+          "availableMargin": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Margem disponível em R$ (calculado: monthlyNetIncome × consignableMargin)"
+          },
+          "investmentCapacity": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Capital disponível para investimento em R$"
+          }
+        },
+        "required": ["monthlyNetIncome", "consignableMargin", "investmentCapacity"]
+      },
+      "riskProfile": {
+        "type": "object",
+        "properties": {
+          "investorProfile": {
+            "type": "string",
+            "enum": ["conservador", "moderado", "agressivo"],
+            "description": "Perfil de investidor"
+          },
+          "probabilityOfDefault": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "PD - Probabilidade de inadimplência (%)"
+          },
+          "lossGivenDefault": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "LGD - Perda esperada em caso de default (%)"
+          },
+          "creditScore": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Score de crédito (0-1000)"
+          }
+        },
+        "required": ["investorProfile", "probabilityOfDefault", "lossGivenDefault"]
+      },
+      "preferences": {
+        "type": "object",
+        "properties": {
+          "preferredChannel": {
+            "type": "string",
+            "enum": ["digital", "telefone", "presencial"],
+            "description": "Canal de atendimento preferido"
+          },
+          "acceptsMarketing": {
+            "type": "boolean",
+            "description": "Aceita comunicações de marketing"
+          },
+          "preferredContactTime": {
+            "type": "string",
+            "enum": ["manhã", "tarde", "noite", "qualquer"],
+            "description": "Horário preferido para contato"
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data de criação do registro"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data da última atualização"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ativo", "inativo", "bloqueado", "pendente"],
+            "description": "Status do cliente"
+          }
+        }
+      }
+    }
+  },
+  "example": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "personalInfo": {
+      "cpf": "12345678901",
+      "fullName": "João da Silva Santos",
+      "dateOfBirth": "1985-06-15",
+      "email": "joao.silva@email.com",
+      "phone": "11987654321"
+    },
+    "financialProfile": {
+      "monthlyNetIncome": 9500.00,
+      "consignableMargin": 22,
+      "availableMargin": 2090.00,
+      "investmentCapacity": 85000.00
+    },
+    "riskProfile": {
+      "investorProfile": "moderado",
+      "probabilityOfDefault": 2.5,
+      "lossGivenDefault": 55,
+      "creditScore": 750
+    },
+    "preferences": {
+      "preferredChannel": "digital",
+      "acceptsMarketing": true,
+      "preferredContactTime": "noite"
+    },
+    "metadata": {
+      "createdAt": "2026-02-13T15:10:00Z",
+      "updatedAt": "2026-02-13T15:10:00Z",
+      "status": "ativo"
+    }
+  }
+}
