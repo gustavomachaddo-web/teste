@@ -1,0 +1,157 @@
+{
+  "systemParameters": {
+    "version": "1.0.0",
+    "lastUpdate": "2026-02-13",
+    "environment": "production"
+  },
+  "clientProfile": {
+    "monthlyNetIncome": 9500.00,
+    "consignableMarginPercentage": 22,
+    "availableMargin": 2090.00,
+    "investmentCapacity": 85000.00,
+    "investorProfile": "moderado"
+  },
+  "creditProduct": {
+    "productName": "Crédito Consignado PF",
+    "principalAmount": 28000.00,
+    "term": 36,
+    "annualRate": 16.08,
+    "monthlyRate": 1.25,
+    "cet": 16.08,
+    "estimatedMonthlyPayment": 970.68,
+    "paymentMethod": "consignado",
+    "features": [
+      "Taxa fixa",
+      "CET visível desde a simulação",
+      "Desconto em folha automático",
+      "Sem taxas ocultas"
+    ]
+  },
+  "investmentProduct": {
+    "productName": "CDB Escalonado 18 Meses",
+    "productType": "CDB",
+    "principalAmount": 85000.00,
+    "term": 18,
+    "annualRate": 12.00,
+    "indexationType": "posfixado_cdi",
+    "cdiPercentage": 105,
+    "liquidityType": "semestral",
+    "features": [
+      "Liquidez semestral parcial",
+      "Rentabilidade acima da poupança",
+      "Proteção FGC até R$ 250.000",
+      "Sem perda de rendimento em resgates programados"
+    ]
+  },
+  "riskParameters": {
+    "probabilityOfDefault": 2.5,
+    "lossGivenDefault": 55,
+    "expectedLoss": 1.375,
+    "spreadLiquido": 4.2,
+    "operationalCosts": 0.5
+  },
+  "kpis": {
+    "targets": {
+      "conversionRate": 20,
+      "retention90Days": 98,
+      "nps": 75,
+      "spreadLiquido": 4.2
+    },
+    "thresholds": {
+      "minConversionRate": 15,
+      "minRetention": 95,
+      "minNPS": 60,
+      "minSpread": 3.5
+    }
+  },
+  "kris": {
+    "thresholds": {
+      "complaintsPerHundredContracts": 5,
+      "complaintsVariationMax": 20,
+      "defaultRate": 2.5,
+      "defaultRateAlert": 3.0,
+      "defaultRateCritical": 4.0,
+      "cancellationRateBefore6Months": 10,
+      "cancellationRateAlert": 15
+    }
+  },
+  "transparencyMessages": {
+    "onboarding": [
+      "Você vê tudo antes de contratar — simples e sem surpresas.",
+      "Parcela fixa e CET visível na simulação.",
+      "Sem taxas ocultas, tudo transparente."
+    ],
+    "investment": [
+      "Seu dinheiro rende enquanto você organiza suas parcelas.",
+      "Rentabilidade superior à poupança.",
+      "Liquidez semestral sem perda de rendimento."
+    ],
+    "digital": [
+      "Cancelou? Resgatou? Sem custo escondido, tudo em um clique.",
+      "Acompanhe tudo pelo app em tempo real.",
+      "Autonomia total no digital."
+    ]
+  },
+  "channels": {
+    "digital": {
+      "app": true,
+      "web": true,
+      "chatbot": true,
+      "whatsapp": true
+    },
+    "humanSupport": {
+      "phone": true,
+      "email": true,
+      "inPerson": false
+    },
+    "sla": {
+      "chatResponse": "5 minutos",
+      "emailResponse": "24 horas",
+      "phoneWaitTime": "2 minutos"
+    }
+  },
+  "onboarding": {
+    "requiredDocuments": [
+      "CPF",
+      "Documento de identidade",
+      "Comprovante de residência",
+      "Holerite (últimos 3 meses)",
+      "Extrato bancário"
+    ],
+    "validations": [
+      "Confirmação de margem consignável",
+      "Consulta a bureaus de crédito",
+      "Verificação de dados bancários",
+      "Quiz de compreensão do produto"
+    ],
+    "maxTimeToApproval": "48 horas"
+  },
+  "compliance": {
+    "regulations": [
+      "Resolução CMN 4.549/2017",
+      "Código de Defesa do Consumidor",
+      "LGPD - Lei 13.709/2018",
+      "Circular BACEN 3.656/2013"
+    ],
+    "mandatoryDisclosures": [
+      "CET - Custo Efetivo Total",
+      "Taxa de juros efetiva",
+      "Cronograma de pagamentos",
+      "Direito de arrependimento (7 dias)",
+      "Canal de ouvidoria"
+    ]
+  },
+  "monitoring": {
+    "reportingFrequency": {
+      "kris": "semanal",
+      "kpis": "mensal",
+      "executiveDashboard": "mensal",
+      "boardReport": "trimestral"
+    },
+    "alerting": {
+      "defaultRateAlert": "automático",
+      "complaintsSpike": "automático",
+      "npsDropAlert": "automático"
+    }
+  }
+}

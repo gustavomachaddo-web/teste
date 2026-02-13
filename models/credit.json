@@ -1,0 +1,213 @@
+{
+  "creditProduct": {
+    "version": "1.0.0",
+    "description": "Estrutura de dados para crédito consignado - Caso 6",
+    "schema": {
+      "contractId": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Identificador único do contrato"
+      },
+      "clientId": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Referência ao cliente"
+      },
+      "contractDetails": {
+        "type": "object",
+        "properties": {
+          "principalAmount": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Valor principal solicitado em R$"
+          },
+          "term": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Prazo em meses"
+          },
+          "monthlyRate": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Taxa de juros mensal (%)"
+          },
+          "annualRate": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Taxa de juros anual (%)"
+          },
+          "cet": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Custo Efetivo Total - CET (%)"
+          },
+          "monthlyPayment": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Valor da parcela mensal em R$"
+          },
+          "totalAmount": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Valor total a ser pago em R$"
+          },
+          "totalInterest": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Total de juros pagos em R$"
+          }
+        },
+        "required": ["principalAmount", "term", "monthlyRate", "annualRate", "cet", "monthlyPayment"]
+      },
+      "paymentDetails": {
+        "type": "object",
+        "properties": {
+          "firstDueDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data do primeiro vencimento"
+          },
+          "lastDueDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data do último vencimento"
+          },
+          "paymentMethod": {
+            "type": "string",
+            "enum": ["consignado", "debito_automatico", "boleto"],
+            "description": "Método de pagamento"
+          },
+          "employerConvenioId": {
+            "type": "string",
+            "description": "ID do convênio com empregador"
+          }
+        },
+        "required": ["firstDueDate", "paymentMethod"]
+      },
+      "schedule": {
+        "type": "array",
+        "description": "Cronograma de pagamentos",
+        "items": {
+          "type": "object",
+          "properties": {
+            "installmentNumber": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Número da parcela"
+            },
+            "dueDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Data de vencimento"
+            },
+            "principalAmount": {
+              "type": "number",
+              "description": "Valor da amortização"
+            },
+            "interestAmount": {
+              "type": "number",
+              "description": "Valor dos juros"
+            },
+            "totalAmount": {
+              "type": "number",
+              "description": "Valor total da parcela"
+            },
+            "remainingBalance": {
+              "type": "number",
+              "description": "Saldo devedor após pagamento"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["pendente", "pago", "atrasado", "cancelado"],
+              "description": "Status do pagamento"
+            }
+          }
+        }
+      },
+      "status": {
+        "type": "object",
+        "properties": {
+          "contractStatus": {
+            "type": "string",
+            "enum": ["simulacao", "aprovado", "ativo", "pago", "cancelado", "inadimplente"],
+            "description": "Status do contrato"
+          },
+          "disbursementDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data de liberação do crédito"
+          },
+          "paidInstallments": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Número de parcelas pagas"
+          },
+          "remainingInstallments": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Número de parcelas restantes"
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "approvedBy": {
+            "type": "string",
+            "description": "ID do aprovador"
+          }
+        }
+      }
+    }
+  },
+  "example": {
+    "contractId": "660e8400-e29b-41d4-a716-446655440001",
+    "clientId": "550e8400-e29b-41d4-a716-446655440000",
+    "contractDetails": {
+      "principalAmount": 28000.00,
+      "term": 36,
+      "monthlyRate": 1.25,
+      "annualRate": 16.08,
+      "cet": 16.08,
+      "monthlyPayment": 970.68,
+      "totalAmount": 34944.48,
+      "totalInterest": 6944.48
+    },
+    "paymentDetails": {
+      "firstDueDate": "2026-03-15",
+      "lastDueDate": "2029-02-15",
+      "paymentMethod": "consignado",
+      "employerConvenioId": "CONV-12345"
+    },
+    "schedule": [
+      {
+        "installmentNumber": 1,
+        "dueDate": "2026-03-15",
+        "principalAmount": 620.59,
+        "interestAmount": 350.09,
+        "totalAmount": 970.68,
+        "remainingBalance": 27379.41,
+        "status": "pendente"
+      }
+    ],
+    "status": {
+      "contractStatus": "aprovado",
+      "disbursementDate": "2026-02-15",
+      "paidInstallments": 0,
+      "remainingInstallments": 36
+    },
+    "metadata": {
+      "createdAt": "2026-02-13T15:10:00Z",
+      "updatedAt": "2026-02-13T15:10:00Z",
+      "approvedBy": "system-auto"
+    }
+  }
+}

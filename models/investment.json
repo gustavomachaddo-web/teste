@@ -1,0 +1,271 @@
+{
+  "investmentProduct": {
+    "version": "1.0.0",
+    "description": "Estrutura de dados para CDB escalonado - Caso 6",
+    "schema": {
+      "investmentId": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Identificador único do investimento"
+      },
+      "clientId": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Referência ao cliente"
+      },
+      "productDetails": {
+        "type": "object",
+        "properties": {
+          "productType": {
+            "type": "string",
+            "enum": ["CDB", "LCI", "LCA", "LC"],
+            "description": "Tipo de produto de investimento"
+          },
+          "productName": {
+            "type": "string",
+            "description": "Nome comercial do produto"
+          },
+          "principalAmount": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Valor inicial investido em R$"
+          },
+          "term": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Prazo total em meses"
+          },
+          "annualRate": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Taxa de rentabilidade anual (%)"
+          },
+          "indexationType": {
+            "type": "string",
+            "enum": ["prefixado", "posfixado_cdi", "posfixado_ipca", "hibrido"],
+            "description": "Tipo de indexação"
+          },
+          "cdiPercentage": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Percentual do CDI (para pós-fixados)"
+          }
+        },
+        "required": ["productType", "principalAmount", "term", "annualRate"]
+      },
+      "liquidityRules": {
+        "type": "object",
+        "properties": {
+          "liquidityType": {
+            "type": "string",
+            "enum": ["diaria", "mensal", "semestral", "vencimento"],
+            "description": "Tipo de liquidez"
+          },
+          "liquidityWindows": {
+            "type": "array",
+            "description": "Janelas de liquidez disponíveis",
+            "items": {
+              "type": "object",
+              "properties": {
+                "windowNumber": {
+                  "type": "integer",
+                  "description": "Número da janela"
+                },
+                "availableDate": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "Data disponível para resgate"
+                },
+                "minRedemptionAmount": {
+                  "type": "number",
+                  "description": "Valor mínimo de resgate em R$"
+                },
+                "penaltyRate": {
+                  "type": "number",
+                  "description": "Percentual de penalidade (%)"
+                }
+              }
+            }
+          },
+          "earlyRedemptionAllowed": {
+            "type": "boolean",
+            "description": "Permite resgate antecipado"
+          },
+          "earlyRedemptionPenalty": {
+            "type": "number",
+            "description": "Penalidade para resgate antecipado (%)"
+          }
+        }
+      },
+      "performance": {
+        "type": "object",
+        "properties": {
+          "currentBalance": {
+            "type": "number",
+            "description": "Saldo atual em R$"
+          },
+          "accumulatedReturn": {
+            "type": "number",
+            "description": "Rendimento acumulado em R$"
+          },
+          "returnRate": {
+            "type": "number",
+            "description": "Taxa de retorno acumulada (%)"
+          },
+          "lastUpdateDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data da última atualização"
+          },
+          "projectedFinalBalance": {
+            "type": "number",
+            "description": "Saldo projetado no vencimento em R$"
+          },
+          "projectedTotalReturn": {
+            "type": "number",
+            "description": "Retorno total projetado em R$"
+          }
+        }
+      },
+      "taxation": {
+        "type": "object",
+        "properties": {
+          "taxType": {
+            "type": "string",
+            "enum": ["ir_regressivo", "isento"],
+            "description": "Tipo de tributação"
+          },
+          "currentTaxRate": {
+            "type": "number",
+            "description": "Alíquota atual de IR (%)"
+          },
+          "estimatedTax": {
+            "type": "number",
+            "description": "Imposto estimado em R$"
+          },
+          "netReturn": {
+            "type": "number",
+            "description": "Retorno líquido após IR em R$"
+          }
+        }
+      },
+      "protection": {
+        "type": "object",
+        "properties": {
+          "fgcProtected": {
+            "type": "boolean",
+            "description": "Protegido pelo FGC"
+          },
+          "fgcLimit": {
+            "type": "number",
+            "description": "Limite de proteção FGC em R$",
+            "default": 250000
+          }
+        }
+      },
+      "status": {
+        "type": "object",
+        "properties": {
+          "investmentStatus": {
+            "type": "string",
+            "enum": ["ativo", "resgatado", "vencido", "cancelado"],
+            "description": "Status do investimento"
+          },
+          "applicationDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data da aplicação"
+          },
+          "maturityDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data de vencimento"
+          },
+          "daysToMaturity": {
+            "type": "integer",
+            "description": "Dias até o vencimento"
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "example": {
+    "investmentId": "770e8400-e29b-41d4-a716-446655440002",
+    "clientId": "550e8400-e29b-41d4-a716-446655440000",
+    "productDetails": {
+      "productType": "CDB",
+      "productName": "CDB Escalonado 18 Meses",
+      "principalAmount": 85000.00,
+      "term": 18,
+      "annualRate": 12.00,
+      "indexationType": "posfixado_cdi",
+      "cdiPercentage": 105
+    },
+    "liquidityRules": {
+      "liquidityType": "semestral",
+      "liquidityWindows": [
+        {
+          "windowNumber": 1,
+          "availableDate": "2026-08-13",
+          "minRedemptionAmount": 5000.00,
+          "penaltyRate": 0
+        },
+        {
+          "windowNumber": 2,
+          "availableDate": "2027-02-13",
+          "minRedemptionAmount": 5000.00,
+          "penaltyRate": 0
+        },
+        {
+          "windowNumber": 3,
+          "availableDate": "2027-08-13",
+          "minRedemptionAmount": 0,
+          "penaltyRate": 0
+        }
+      ],
+      "earlyRedemptionAllowed": false,
+      "earlyRedemptionPenalty": 0
+    },
+    "performance": {
+      "currentBalance": 85000.00,
+      "accumulatedReturn": 0,
+      "returnRate": 0,
+      "lastUpdateDate": "2026-02-13",
+      "projectedFinalBalance": 100500.00,
+      "projectedTotalReturn": 15500.00
+    },
+    "taxation": {
+      "taxType": "ir_regressivo",
+      "currentTaxRate": 22.5,
+      "estimatedTax": 2325.00,
+      "netReturn": 13175.00
+    },
+    "protection": {
+      "fgcProtected": true,
+      "fgcLimit": 250000
+    },
+    "status": {
+      "investmentStatus": "ativo",
+      "applicationDate": "2026-02-13",
+      "maturityDate": "2027-08-13",
+      "daysToMaturity": 546
+    },
+    "metadata": {
+      "createdAt": "2026-02-13T15:10:00Z",
+      "updatedAt": "2026-02-13T15:10:00Z"
+    }
+  }
+}
