@@ -2,6 +2,12 @@
 
 **Versão ajustada – nota 10/10**
 
+## 🎯 Início Rápido
+
+**Novo usuário? Comece aqui:** [📖 QUICKSTART.md](QUICKSTART.md) - Guia de 5 minutos!
+
+---
+
 ## 📋 Mini-Resumo Executivo
 
 ### Perfil do Cliente

@@ -1,0 +1,45 @@
+{
+  "clientProfile": {
+    "monthlyNetIncome": 9500.0,
+    "consignableMargin": 22,
+    "availableMargin": 2090.0,
+    "investorProfile": "moderado"
+  },
+  "credit": {
+    "principalAmount": 28000.0,
+    "monthlyPayment": 970.68,
+    "totalInterest": 6944.48,
+    "cet": 16.08,
+    "remainingInstallments": 36,
+    "firstDueDate": "2026-03-15",
+    "lastDueDate": "2029-02-27"
+  },
+  "investment": {
+    "principalAmount": 85000.0,
+    "projectedNetReturn": 12993.92,
+    "averageMonthlyReturn": 721.8844444444444,
+    "annualRate": 12.0,
+    "maturityDate": "2027-08-07",
+    "liquidityWindows": 3,
+    "fgcProtected": true
+  },
+  "consolidated": {
+    "monthlyPayment": 970.68,
+    "averageMonthlyReturn": 721.8844444444444,
+    "netMonthlyImpact": 248.79555555555555,
+    "marginUsage": 46.444019138755976,
+    "totalCreditCost": 6944.48,
+    "totalInvestmentReturn": 12993.92,
+    "netFinancialBenefit": 6049.4400000000005
+  },
+  "risk": {
+    "probabilityOfDefault": 2.5,
+    "lossGivenDefault": 55,
+    "expectedLoss": 1.375
+  },
+  "targets": {
+    "conversionRate": 20,
+    "retention90Days": 98,
+    "nps": 75
+  }
+}
