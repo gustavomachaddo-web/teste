@@ -84,42 +84,95 @@ Slogans enxutos visíveis no canal digital e no onboarding do produto:
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do Projeto (Organizada)
 
 ```
 .
-├── README.md                 # Este arquivo
-├── docs/                     # Documentação adicional
-│   ├── client-profile.md    # Perfil detalhado do cliente
-│   ├── risk-matrix.md       # Matriz de riscos expandida
-│   └── kpi-dashboard.md     # Dashboard de KPIs
-├── models/                   # Modelos de dados
-│   ├── client.json          # Estrutura do perfil do cliente
-│   ├── credit.json          # Estrutura do crédito consignado
-│   └── investment.json      # Estrutura do investimento CDB
-├── calculators/              # Calculadoras financeiras
-│   ├── credit-calculator.py # Cálculo de parcelas e CET
-│   └── investment-calculator.py # Cálculo de rendimentos CDB
-└── config/                   # Configurações
-    └── parameters.json      # Parâmetros do sistema
+├── README.md                           # Este arquivo
+├── EXECUTIVE_SUMMARY.md                # Resumo executivo completo
+│
+├── planilhas/                          # 📊 PLANILHAS DE ORÇAMENTO (CSV)
+│   ├── README.md                       # Guia de uso das planilhas
+│   ├── orcamento_consolidado.csv       # Resumo financeiro completo
+│   ├── credito_cronograma_pagamentos.csv  # Cronograma de 36 parcelas
+│   ├── investimento_projecao_mensal.csv   # Projeção de 18 meses
+│   └── investimento_janelas_liquidez.csv  # Janelas de resgate
+│
+├── calculators/                        # 🧮 Calculadoras financeiras
+│   ├── credit-calculator.py            # Cálculo de parcelas e CET
+│   ├── investment-calculator.py        # Cálculo de rendimentos CDB
+│   └── integrated-dashboard.py         # Painel integrado 360°
+│
+├── scripts/                            # 🔧 Scripts utilitários
+│   └── generate_budget_spreadsheets.py # Gerador de planilhas CSV
+│
+├── config/                             # ⚙️ Configurações
+│   └── parameters.json                 # Parâmetros do sistema
+│
+├── models/                             # 📐 Modelos de dados (JSON)
+│   ├── client.json                     # Estrutura do perfil do cliente
+│   ├── credit.json                     # Estrutura do crédito consignado
+│   └── investment.json                 # Estrutura do investimento CDB
+│
+└── docs/                               # 📚 Documentação adicional
+    ├── USAGE.md                        # Guia de uso completo
+    ├── client-profile.md               # Perfil detalhado do cliente
+    ├── risk-matrix.md                  # Matriz de riscos expandida
+    └── kpi-dashboard.md                # Dashboard de KPIs
 ```
 
 ---
 
 ## 🚀 Como Utilizar
 
-### Pré-requisitos
-- Python 3.8+
-- Bibliotecas: `json`, `datetime`, `decimal`
+### Opção 1: Usar as Planilhas Prontas (Recomendado para Análise Rápida)
 
-### Execução
+As planilhas em formato CSV estão prontas para uso em Excel, Google Sheets ou LibreOffice:
+
 ```bash
-# Calcular crédito consignado
-python calculators/credit-calculator.py
-
-# Calcular investimento CDB
-python calculators/investment-calculator.py
+# As planilhas estão em: ./planilhas/
+# Abra qualquer arquivo .csv em seu programa de planilhas favorito
 ```
+
+**Planilhas disponíveis:**
+- 📊 `orcamento_consolidado.csv` - Visão geral executiva
+- 💳 `credito_cronograma_pagamentos.csv` - 36 parcelas detalhadas
+- 📈 `investimento_projecao_mensal.csv` - Projeção de 18 meses
+- 🔓 `investimento_janelas_liquidez.csv` - Janelas de resgate
+
+Veja [planilhas/README.md](planilhas/README.md) para guia completo de uso.
+
+---
+
+### Opção 2: Executar as Calculadoras (Para Análises Personalizadas)
+
+#### Calcular Crédito Consignado
+```bash
+python3 calculators/credit-calculator.py
+```
+
+#### Calcular Investimento CDB
+```bash
+python3 calculators/investment-calculator.py
+```
+
+#### Ver Painel Integrado 360°
+```bash
+python3 calculators/integrated-dashboard.py
+```
+
+---
+
+### Opção 3: Gerar Novas Planilhas (Após Alterar Parâmetros)
+
+Se você modificar os parâmetros em `config/parameters.json`:
+
+```bash
+# Gerar todas as planilhas atualizadas
+python3 scripts/generate_budget_spreadsheets.py
+```
+
+Isso regerará todas as 4 planilhas CSV com os novos dados.
 
 ---
 
