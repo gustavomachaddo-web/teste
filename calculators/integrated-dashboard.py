@@ -231,7 +231,8 @@ def main():
     """Exemplo de uso do painel integrado"""
     
     # Carrega parâmetros do sistema
-    with open('../config/parameters.json', 'r', encoding='utf-8') as f:
+    config_path = Path(__file__).parent.parent / 'config' / 'parameters.json'
+    with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
     
     # Cria painel integrado
