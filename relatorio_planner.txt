@@ -1,0 +1,167 @@
+================================================================================
+RELATÓRIO DE CARDS DO PLANNER
+================================================================================
+Data de Geração: 13/02/2026 13:23:29
+
+RESUMO GERAL
+--------------------------------------------------------------------------------
+Total de Cards: 10
+Taxa de Conclusão: 20.00%
+Cards Atrasados: 1
+
+DISTRIBUIÇÃO POR STATUS
+--------------------------------------------------------------------------------
+  Concluído: 2 (20.0%)
+  Em Progresso: 4 (40.0%)
+  Não Iniciado: 3 (30.0%)
+  Bloqueado: 1 (10.0%)
+
+DISTRIBUIÇÃO POR PRIORIDADE
+--------------------------------------------------------------------------------
+  Alta: 3 (30.0%)
+  Média: 4 (40.0%)
+  Urgente: 1 (10.0%)
+  Baixa: 2 (20.0%)
+
+CARGA DE TRABALHO POR RESPONSÁVEL
+--------------------------------------------------------------------------------
+  João Silva: 3 cards
+  Maria Santos: 2 cards
+  Pedro Oliveira: 2 cards
+  Ana Costa: 2 cards
+
+DISTRIBUIÇÃO POR TAGS
+--------------------------------------------------------------------------------
+  desenvolvimento: 3 cards
+  backend: 3 cards
+  frontend: 3 cards
+  segurança: 2 cards
+  UI/UX: 2 cards
+  performance: 1 cards
+  database: 1 cards
+  testes: 1 cards
+  qualidade: 1 cards
+  bug: 1 cards
+  urgente: 1 cards
+  documentação: 1 cards
+  API: 1 cards
+  devops: 1 cards
+  infraestrutura: 1 cards
+  notificações: 1 cards
+  code-review: 1 cards
+  pagamentos: 1 cards
+  marketing: 1 cards
+
+CARDS ATRASADOS
+--------------------------------------------------------------------------------
+  ID 5: Corrigir bug no checkout
+    Responsável: Maria Santos
+    Prazo: 11/02/2026
+    Status: Bloqueado
+
+DETALHAMENTO DE TODOS OS CARDS
+--------------------------------------------------------------------------------
+
+ID: 1
+Título: Desenvolver funcionalidade de login
+Descrição: Implementar sistema de autenticação com email e senha
+Status: Concluído
+Prioridade: Alta
+Responsável: João Silva
+Prazo: 08/02/2026
+Tags: desenvolvimento, backend, segurança
+----------------------------------------
+
+ID: 2
+Título: Criar dashboard de relatórios
+Descrição: Desenvolver interface para visualização de métricas
+Status: Em Progresso
+Prioridade: Alta
+Responsável: Maria Santos
+Prazo: 18/02/2026
+Tags: desenvolvimento, frontend, UI/UX
+----------------------------------------
+
+ID: 3
+Título: Otimizar consultas no banco de dados
+Descrição: Melhorar performance das queries principais
+Status: Em Progresso
+Prioridade: Média
+Responsável: João Silva
+Prazo: 23/02/2026
+Tags: backend, performance, database
+----------------------------------------
+
+ID: 4
+Título: Implementar testes automatizados
+Descrição: Criar suite de testes unitários e de integração
+Status: Não Iniciado
+Prioridade: Média
+Responsável: Pedro Oliveira
+Prazo: 28/02/2026
+Tags: testes, qualidade
+----------------------------------------
+
+ID: 5
+Título: Corrigir bug no checkout
+Descrição: Resolver problema de cálculo de desconto no checkout
+Status: Bloqueado
+Prioridade: Urgente
+Responsável: Maria Santos
+Prazo: 11/02/2026
+Tags: bug, frontend, urgente
+----------------------------------------
+
+ID: 6
+Título: Atualizar documentação da API
+Descrição: Documentar novos endpoints e atualizar exemplos
+Status: Em Progresso
+Prioridade: Baixa
+Responsável: Pedro Oliveira
+Prazo: 05/03/2026
+Tags: documentação, API
+----------------------------------------
+
+ID: 7
+Título: Configurar ambiente de staging
+Descrição: Preparar ambiente de testes antes da produção
+Status: Concluído
+Prioridade: Média
+Responsável: Ana Costa
+Prazo: 03/02/2026
+Tags: devops, infraestrutura
+----------------------------------------
+
+ID: 8
+Título: Implementar notificações por email
+Descrição: Sistema de envio de emails transacionais
+Status: Não Iniciado
+Prioridade: Baixa
+Responsável: João Silva
+Prazo: 15/03/2026
+Tags: desenvolvimento, backend, notificações
+----------------------------------------
+
+ID: 9
+Título: Revisar código do módulo de pagamentos
+Descrição: Code review e refatoração do módulo de pagamentos
+Status: Em Progresso
+Prioridade: Alta
+Responsável: Ana Costa
+Prazo: 16/02/2026
+Tags: code-review, pagamentos, segurança
+----------------------------------------
+
+ID: 10
+Título: Criar landing page promocional
+Descrição: Desenvolver página para campanha de marketing
+Status: Não Iniciado
+Prioridade: Média
+Responsável: Não atribuído
+Prazo: 10/03/2026
+Tags: frontend, marketing, UI/UX
+----------------------------------------
+
+================================================================================
+FIM DO RELATÓRIO
+================================================================================
