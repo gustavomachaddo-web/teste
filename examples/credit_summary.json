@@ -1,0 +1,343 @@
+{
+  "contractDetails": {
+    "principalAmount": 28000.0,
+    "term": 36,
+    "monthlyRate": 1.2503306037707433,
+    "annualRate": 16.08,
+    "cet": 16.08,
+    "monthlyPayment": 970.68,
+    "totalAmount": 34944.48,
+    "totalInterest": 6944.48
+  },
+  "paymentDetails": {
+    "firstDueDate": "2026-03-15",
+    "lastDueDate": "2029-02-27",
+    "paymentMethod": "consignado"
+  },
+  "schedule": [
+    {
+      "installmentNumber": 1,
+      "dueDate": "2026-03-15",
+      "principalAmount": 620.59,
+      "interestAmount": 350.09,
+      "totalAmount": 970.68,
+      "remainingBalance": 27379.41,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 2,
+      "dueDate": "2026-04-14",
+      "principalAmount": 628.35,
+      "interestAmount": 342.33,
+      "totalAmount": 970.68,
+      "remainingBalance": 26751.06,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 3,
+      "dueDate": "2026-05-14",
+      "principalAmount": 636.2,
+      "interestAmount": 334.48,
+      "totalAmount": 970.68,
+      "remainingBalance": 26114.86,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 4,
+      "dueDate": "2026-06-13",
+      "principalAmount": 644.16,
+      "interestAmount": 326.52,
+      "totalAmount": 970.68,
+      "remainingBalance": 25470.7,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 5,
+      "dueDate": "2026-07-13",
+      "principalAmount": 652.21,
+      "interestAmount": 318.47,
+      "totalAmount": 970.68,
+      "remainingBalance": 24818.49,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 6,
+      "dueDate": "2026-08-12",
+      "principalAmount": 660.37,
+      "interestAmount": 310.31,
+      "totalAmount": 970.68,
+      "remainingBalance": 24158.12,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 7,
+      "dueDate": "2026-09-11",
+      "principalAmount": 668.62,
+      "interestAmount": 302.06,
+      "totalAmount": 970.68,
+      "remainingBalance": 23489.5,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 8,
+      "dueDate": "2026-10-11",
+      "principalAmount": 676.98,
+      "interestAmount": 293.7,
+      "totalAmount": 970.68,
+      "remainingBalance": 22812.52,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 9,
+      "dueDate": "2026-11-10",
+      "principalAmount": 685.45,
+      "interestAmount": 285.23,
+      "totalAmount": 970.68,
+      "remainingBalance": 22127.07,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 10,
+      "dueDate": "2026-12-10",
+      "principalAmount": 694.02,
+      "interestAmount": 276.66,
+      "totalAmount": 970.68,
+      "remainingBalance": 21433.05,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 11,
+      "dueDate": "2027-01-09",
+      "principalAmount": 702.7,
+      "interestAmount": 267.98,
+      "totalAmount": 970.68,
+      "remainingBalance": 20730.35,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 12,
+      "dueDate": "2027-02-08",
+      "principalAmount": 711.48,
+      "interestAmount": 259.2,
+      "totalAmount": 970.68,
+      "remainingBalance": 20018.87,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 13,
+      "dueDate": "2027-03-10",
+      "principalAmount": 720.38,
+      "interestAmount": 250.3,
+      "totalAmount": 970.68,
+      "remainingBalance": 19298.49,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 14,
+      "dueDate": "2027-04-09",
+      "principalAmount": 729.39,
+      "interestAmount": 241.29,
+      "totalAmount": 970.68,
+      "remainingBalance": 18569.1,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 15,
+      "dueDate": "2027-05-09",
+      "principalAmount": 738.5,
+      "interestAmount": 232.18,
+      "totalAmount": 970.68,
+      "remainingBalance": 17830.6,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 16,
+      "dueDate": "2027-06-08",
+      "principalAmount": 747.74,
+      "interestAmount": 222.94,
+      "totalAmount": 970.68,
+      "remainingBalance": 17082.86,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 17,
+      "dueDate": "2027-07-08",
+      "principalAmount": 757.09,
+      "interestAmount": 213.59,
+      "totalAmount": 970.68,
+      "remainingBalance": 16325.77,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 18,
+      "dueDate": "2027-08-07",
+      "principalAmount": 766.55,
+      "interestAmount": 204.13,
+      "totalAmount": 970.68,
+      "remainingBalance": 15559.22,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 19,
+      "dueDate": "2027-09-06",
+      "principalAmount": 776.14,
+      "interestAmount": 194.54,
+      "totalAmount": 970.68,
+      "remainingBalance": 14783.08,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 20,
+      "dueDate": "2027-10-06",
+      "principalAmount": 785.84,
+      "interestAmount": 184.84,
+      "totalAmount": 970.68,
+      "remainingBalance": 13997.24,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 21,
+      "dueDate": "2027-11-05",
+      "principalAmount": 795.67,
+      "interestAmount": 175.01,
+      "totalAmount": 970.68,
+      "remainingBalance": 13201.57,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 22,
+      "dueDate": "2027-12-05",
+      "principalAmount": 805.62,
+      "interestAmount": 165.06,
+      "totalAmount": 970.68,
+      "remainingBalance": 12395.95,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 23,
+      "dueDate": "2028-01-04",
+      "principalAmount": 815.69,
+      "interestAmount": 154.99,
+      "totalAmount": 970.68,
+      "remainingBalance": 11580.26,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 24,
+      "dueDate": "2028-02-03",
+      "principalAmount": 825.89,
+      "interestAmount": 144.79,
+      "totalAmount": 970.68,
+      "remainingBalance": 10754.37,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 25,
+      "dueDate": "2028-03-04",
+      "principalAmount": 836.21,
+      "interestAmount": 134.47,
+      "totalAmount": 970.68,
+      "remainingBalance": 9918.16,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 26,
+      "dueDate": "2028-04-03",
+      "principalAmount": 846.67,
+      "interestAmount": 124.01,
+      "totalAmount": 970.68,
+      "remainingBalance": 9071.49,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 27,
+      "dueDate": "2028-05-03",
+      "principalAmount": 857.26,
+      "interestAmount": 113.42,
+      "totalAmount": 970.68,
+      "remainingBalance": 8214.23,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 28,
+      "dueDate": "2028-06-02",
+      "principalAmount": 867.97,
+      "interestAmount": 102.71,
+      "totalAmount": 970.68,
+      "remainingBalance": 7346.26,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 29,
+      "dueDate": "2028-07-02",
+      "principalAmount": 878.83,
+      "interestAmount": 91.85,
+      "totalAmount": 970.68,
+      "remainingBalance": 6467.43,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 30,
+      "dueDate": "2028-08-01",
+      "principalAmount": 889.82,
+      "interestAmount": 80.86,
+      "totalAmount": 970.68,
+      "remainingBalance": 5577.61,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 31,
+      "dueDate": "2028-08-31",
+      "principalAmount": 900.94,
+      "interestAmount": 69.74,
+      "totalAmount": 970.68,
+      "remainingBalance": 4676.67,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 32,
+      "dueDate": "2028-09-30",
+      "principalAmount": 912.21,
+      "interestAmount": 58.47,
+      "totalAmount": 970.68,
+      "remainingBalance": 3764.46,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 33,
+      "dueDate": "2028-10-30",
+      "principalAmount": 923.61,
+      "interestAmount": 47.07,
+      "totalAmount": 970.68,
+      "remainingBalance": 2840.85,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 34,
+      "dueDate": "2028-11-29",
+      "principalAmount": 935.16,
+      "interestAmount": 35.52,
+      "totalAmount": 970.68,
+      "remainingBalance": 1905.69,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 35,
+      "dueDate": "2028-12-29",
+      "principalAmount": 946.85,
+      "interestAmount": 23.83,
+      "totalAmount": 970.68,
+      "remainingBalance": 958.84,
+      "status": "pendente"
+    },
+    {
+      "installmentNumber": 36,
+      "dueDate": "2029-01-28",
+      "principalAmount": 958.84,
+      "interestAmount": 11.99,
+      "totalAmount": 970.68,
+      "remainingBalance": 0.0,
+      "status": "pendente"
+    }
+  ]
+}
