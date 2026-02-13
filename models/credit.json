@@ -176,10 +176,10 @@
       "term": 36,
       "monthlyRate": 1.25,
       "annualRate": 16.08,
-      "cet": 16.50,
-      "monthlyPayment": 1011.20,
-      "totalAmount": 36403.20,
-      "totalInterest": 8403.20
+      "cet": 16.08,
+      "monthlyPayment": 970.68,
+      "totalAmount": 34944.48,
+      "totalInterest": 6944.48
     },
     "paymentDetails": {
       "firstDueDate": "2026-03-15",
@@ -191,10 +191,10 @@
       {
         "installmentNumber": 1,
         "dueDate": "2026-03-15",
-        "principalAmount": 661.20,
-        "interestAmount": 350.00,
-        "totalAmount": 1011.20,
-        "remainingBalance": 27338.80,
+        "principalAmount": 620.59,
+        "interestAmount": 350.09,
+        "totalAmount": 970.68,
+        "remainingBalance": 27379.41,
         "status": "pendente"
       }
     ],

@@ -17,8 +17,8 @@
     "term": 36,
     "annualRate": 16.08,
     "monthlyRate": 1.25,
-    "cet": 16.50,
-    "estimatedMonthlyPayment": 1011.20,
+    "cet": 16.08,
+    "estimatedMonthlyPayment": 970.68,
     "paymentMethod": "consignado",
     "features": [
       "Taxa fixa",
