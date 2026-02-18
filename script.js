@@ -531,7 +531,7 @@ function renderTimeline() {
 
             if (dueDate < today && task.status !== 'completed') {
                 overdueTasks.push(task);
-            } else if (dueDate.getTime() === today.getTime()) {
+            } else if (dueDate.toDateString() === today.toDateString()) {
                 todayTasks.push(task);
             } else if (dueDate > today && dueDate < weekEnd) {
                 weekTasks.push(task);
@@ -543,16 +543,18 @@ function renderTimeline() {
         }
     });
 
-    // Renderizar cada seção
-    renderTimelineSection('overdue-timeline', overdueTasks, true);
-    renderTimelineSection('today-timeline', todayTasks, false);
-    renderTimelineSection('week-timeline', weekTasks, false);
-    renderTimelineSection('next-week-timeline', nextWeekTasks, false);
-    renderTimelineSection('later-timeline', laterTasks, false);
-    renderTimelineSection('no-date-timeline', noDateTasks, false);
+    // Renderizar cada seção e coletar informações sobre conteúdo
+    const sectionData = {
+        'overdue-section': renderTimelineSection('overdue-timeline', overdueTasks, true),
+        'today-section': renderTimelineSection('today-timeline', todayTasks, false),
+        'week-section': renderTimelineSection('week-timeline', weekTasks, false),
+        'next-week-section': renderTimelineSection('next-week-timeline', nextWeekTasks, false),
+        'later-section': renderTimelineSection('later-timeline', laterTasks, false),
+        'no-date-section': renderTimelineSection('no-date-timeline', noDateTasks, false)
+    };
 
     // Ocultar seções vazias
-    hideEmptyTimelineSections();
+    hideEmptyTimelineSections(sectionData);
 }
 
 function renderTimelineSection(containerId, tasks, isOverdue) {
@@ -561,7 +563,7 @@ function renderTimelineSection(containerId, tasks, isOverdue) {
 
     if (tasks.length === 0) {
         container.innerHTML = '<div class="timeline-empty">Nenhuma tarefa</div>';
-        return;
+        return false; // Indica que a seção está vazia
     }
 
     // Ordenar por data
@@ -575,6 +577,8 @@ function renderTimelineSection(containerId, tasks, isOverdue) {
         const taskElement = createTimelineTask(task, isOverdue);
         container.appendChild(taskElement);
     });
+    
+    return true; // Indica que a seção tem conteúdo
 }
 
 function createTimelineTask(task, isOverdue) {
@@ -621,21 +625,12 @@ function createTimelineTask(task, isOverdue) {
     return div;
 }
 
-function hideEmptyTimelineSections() {
-    const sections = [
-        'overdue-section',
-        'today-section',
-        'week-section',
-        'next-week-section',
-        'later-section',
-        'no-date-section'
-    ];
-
-    sections.forEach(sectionId => {
+function hideEmptyTimelineSections(sectionData) {
+    Object.keys(sectionData).forEach(sectionId => {
         const section = document.getElementById(sectionId);
-        const container = section.querySelector('.timeline-tasks');
+        const hasContent = sectionData[sectionId];
         
-        if (container.innerHTML.includes('Nenhuma tarefa')) {
+        if (!hasContent) {
             section.style.display = 'none';
         } else {
             section.style.display = 'block';
