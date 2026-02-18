@@ -1,0 +1,5 @@
+# Requirements for Data Measurement Agent
+# Python 3.7+ required
+
+# No external dependencies required - uses only Python standard library
+# The agent is designed to work with built-in modules only
