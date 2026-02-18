@@ -14,9 +14,15 @@
 
 ```
 📦 teste/
- ┣ 📄 Plano_Estrategico_PF.md    → Trabalho completo (documento principal)
+ ┣ 📄 Plano_Estrategico_PF.md    → Trabalho completo (formato Markdown)
+ ┣ 📄 Plano_Estrategico_PF.docx  → Trabalho completo (formato Word - FGV)
  ┗ 📄 README.md                   → Este arquivo
 ```
+
+### 📥 Formatos Disponíveis
+
+- **Markdown (.md)**: Formato original, ideal para visualização no GitHub
+- **Word (.docx)**: Formato para submissão no site da FGV, compatível com Microsoft Word 2007+
 
 ---
 
@@ -140,10 +146,17 @@ O documento está organizado conforme a estrutura obrigatória:
 
 ## 📞 Informações
 
-**Documento Principal:** `Plano_Estrategico_PF.md`  
-**Formato:** Markdown  
+**Documentos Disponíveis:**
+- `Plano_Estrategico_PF.md` - Formato Markdown (visualização GitHub)
+- `Plano_Estrategico_PF.docx` - Formato Word (submissão FGV)
+
+**Formatos:** Markdown (.md) e Microsoft Word (.docx)  
 **Páginas:** ~8 páginas equivalentes (dentro do limite de 10)  
 **Idioma:** Português Brasileiro
+
+### 📤 Para Submissão na FGV
+
+Use o arquivo **`Plano_Estrategico_PF.docx`** para fazer o upload no site da FGV. O documento está formatado corretamente e compatível com Microsoft Word 2007 e versões superiores.
 
 ---
 
