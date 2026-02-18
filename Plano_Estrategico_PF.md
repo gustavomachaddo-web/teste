@@ -459,9 +459,7 @@ Taxa de renovação CDB           | >75%      | <78% → Aumentar remuneração
 **Atividades:**
 1. **Customer discovery:**
    - 50 entrevistas em profundidade
-   - Jobs-to-be-done: "Preciso de dinheiro rápido sem burocr
-
-acia"
+   - Jobs-to-be-done: "Preciso de dinheiro rápido sem burocracia"
    - Personas: João (CLT, renda R$ 3,5k), Maria (autônoma, ex-CLT)
 
 2. **Análise competitiva:**
