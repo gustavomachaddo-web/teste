@@ -2,6 +2,9 @@
 let tasks = [];
 let editingTaskId = null;
 
+// Constantes
+const TIME_MIDNIGHT = 'T00:00:00';
+
 // Elementos do DOM
 const modal = document.getElementById('taskModal');
 const addTaskBtn = document.getElementById('addTaskBtn');
@@ -252,7 +255,7 @@ function generateId() {
 }
 
 function formatDate(dateString) {
-    const date = new Date(dateString + 'T00:00:00');
+    const date = new Date(dateString + TIME_MIDNIGHT);
     return date.toLocaleDateString('pt-BR');
 }
 
@@ -260,7 +263,7 @@ function isOverdue(dueDate) {
     if (!dueDate) return false;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const due = new Date(dueDate + 'T00:00:00');
+    const due = new Date(dueDate + TIME_MIDNIGHT);
     due.setHours(0, 0, 0, 0);
     return due < today;
 }
