@@ -151,7 +151,7 @@ O documento está organizado conforme a estrutura obrigatória:
 - `Plano_Estrategico_PF.docx` - Formato Word (submissão FGV)
 
 **Formatos:** Markdown (.md) e Microsoft Word (.docx)  
-**Páginas:** ~8 páginas equivalentes (dentro do limite de 10)  
+**Páginas:** ~10 páginas (dentro do limite de 10)  
 **Idioma:** Português Brasileiro
 
 ### 📤 Para Submissão na FGV

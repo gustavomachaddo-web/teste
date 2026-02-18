@@ -17,6 +17,50 @@ Este plano estratégico visa crescimento sustentável de R$ 1,0 bi na carteira P
 
 ---
 
+## CONTEXTO E DIAGNÓSTICO INICIAL
+
+### Análise do Mercado PF Brasileiro
+
+O mercado de crédito pessoa física no Brasil apresenta oportunidades significativas:
+
+**Dimensão e tendências:**
+- Saldo total PF: R$ 2,8 trilhões (BCB, dez/2025)
+- Crescimento médio: 8,5% a.a.
+- Consignado: 28% do mercado (R$ 784 bi) → **FOCO ESTRATÉGICO**
+- Open Banking: 28% de adesão (oportunidade de pricing risk-based)
+- Digitalização: 73% das originações são digitais
+
+### Posicionamento Competitivo
+
+**Benchmarking:**
+
+| Player | Carteira PF | Taxa Consig. | NPS | Digital % |
+|--------|-------------|--------------|-----|-----------|
+| **Big 5** | R$ 350 bi | 19,5% a.a. | 42 | 85% |
+| **Fintechs** | R$ 3 bi | 23% a.a. | 72 | 98% |
+| **Nosso banco** | R$ 2,3 bi | 23% a.a. | 54 | 45% |
+
+**GAP Analysis:**
+- Taxa 3,5 p.p. acima dos Big 5 (perda de competitividade)
+- Digital 40 p.p. abaixo de fintechs (experiência inferior)
+- CAC 30% acima da média (R$ 420 vs R$ 325)
+
+### Diagnóstico SWOT (Síntese)
+
+**Forças:** Relacionamento regional, carteira saudável (NPL 4,2%), equipe experiente
+
+**Fraquezas:** Tecnologia legada, baixa digitalização (45%), dependência de CDB
+
+**Oportunidades:** Consignado privado (+45% a.a.), FGTS Digital (MP 1.185), queda de juros
+
+**Ameaças:** Fintechs agressivas, guerra de preços Big 5, inadimplência setorial subindo
+
+### Imperativo Estratégico
+
+> **"Crescer R$ 1,0 bi de forma sustentável, combinando competitividade em taxas com experiência digital superior, focando em consignado (menor risco) e inovação (FGTS Digital)."**
+
+---
+
 ## PARTE 1 – ESTRATÉGIA DE PORTFÓLIO PF
 
 ### 1.1 Produto Líder de Crescimento
@@ -885,6 +929,87 @@ Pessoal faixa C │
 | NPL 90+ | 4,2% | <4,8% | 4,5% ✓ |
 | NIM (margem líquida) | 2,1% | 2,7% | 2,8% ✓ |
 | Índice de Basileia | 14,2% | >14% | 14,8% ✓ |
+
+---
+
+## ROADMAP DE IMPLEMENTAÇÃO
+
+### Cronograma Executivo (12 Meses)
+
+**FASE 1 - FUNDAÇÕES (Meses 1-3)**
+
+Objetivo: Estabelecer bases para crescimento
+
+**Principais iniciativas:**
+- Setup de governança (Comitê Estratégico PF semanal)
+- Revisão de política de crédito (5 faixas de score)
+- Integração open banking (fase 2)
+- Piloto consignado privado (3 empresas, 5k funcionários)
+- Desenvolvimento seguro opt-in
+
+**Investimento:** R$ 2,5 mi | **Volume:** R$ 190 mi | **Carteira:** R$ 2,49 bi
+
+---
+
+**FASE 2 - ACELERAÇÃO (Meses 4-8)**
+
+Objetivo: Escalar volume com qualidade
+
+**Principais iniciativas:**
+- Expansão consignado (adicionar 15 empresas, 30k funcionários)
+- Lançamento app renovado + pricing dinâmico
+- Lançamento seguro prestamista (taxa de adesão: 38%)
+- Emissão DPGE2: R$ 300 mi (prazo 36 meses)
+- Launch NPD FGTS Digital (lançamento nacional)
+
+**Investimento:** R$ 15,0 mi | **Volume:** R$ 560 mi | **Carteira:** R$ 3,05 bi
+
+---
+
+**FASE 3 - CONSOLIDAÇÃO (Meses 9-12)**
+
+Objetivo: Atingir meta e sustentar crescimento
+
+**Principais iniciativas:**
+- Aceleração FGTS Digital (1.500 ops/mês)
+- Estruturação FIDC consignado (R$ 500 mi)
+- Cashback program (retenção)
+- Refinanciamento automático
+
+**Investimento:** R$ 10,5 mi | **Volume:** R$ 250 mi | **Carteira:** R$ 3,30 bi ✅
+
+---
+
+### Orçamento Consolidado
+
+| Categoria | Investimento | % |
+|-----------|--------------|---|
+| Tecnologia | R$ 12,5 mi | 45% |
+| Marketing | R$ 8,2 mi | 29% |
+| Pessoas | R$ 4,8 mi | 17% |
+| Governança | R$ 2,5 mi | 9% |
+| **TOTAL** | **R$ 28,0 mi** | **100%** |
+
+**ROI:** 96% no ano 1 | **Payback:** 12,4 meses
+
+---
+
+### Governança e Riscos
+
+**Estrutura:**
+- Comitê Estratégico PF (semanal): CEO, CCO, CRO, CFO, CTO
+- 4 Squads Ágeis: Crescimento, Experiência, Risco, Eficiência
+
+**Top 3 Riscos e Mitigações:**
+
+1. **Risco de Execução** (Prob: Média | Impacto: Alto)
+   - Mitigação: Revisão mensal de pipeline, Plano B: portabilidade
+
+2. **Risco de Inadimplência** (Prob: Média | Impacto: Alto)
+   - Mitigação: Tightening de crédito se NPL > 5,5%
+
+3. **Risco de Liquidez** (Prob: Baixa | Impacto: Alto)
+   - Mitigação: Acelerar DPGE2, acesso a redesconto BCB
 
 ---
 
