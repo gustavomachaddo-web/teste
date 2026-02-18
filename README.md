@@ -9,6 +9,8 @@ Este projeto implementa um agente inteligente que pode mensurar dados, calcular 
 - **Análise de Status**: Classifica KPIs em diferentes níveis (Excelente, Bom, Atenção, Crítico)
 - **Geração de Plano de Ação**: Cria recomendações automáticas baseadas no desempenho dos KPIs
 - **Relatórios**: Gera relatórios detalhados em formato console e JSON
+- **Processamento de Dados Tabulares**: Analisa dados de múltiplos coordenadores/equipes com relatórios consolidados
+- **Suporte a KPIs Inversos**: Métricas onde valores menores são melhores
 
 ## Instalação
 
@@ -21,6 +23,23 @@ Este projeto implementa um agente inteligente que pode mensurar dados, calcular 
 ```bash
 pip install -r requirements.txt
 ```
+
+## Uso
+
+### Uso Rápido - Processar Dados de Coordenadores
+
+Para analisar dados de performance de múltiplos coordenadores:
+
+```bash
+python processar_coordenadores.py
+```
+
+Este script irá:
+- Processar dados tabulares de coordenadores
+- Calcular KPIs individuais para cada um
+- Gerar relatório consolidado com ranking
+- Identificar coordenadores que requerem atenção
+- Exportar relatório completo em JSON
 
 ## Uso
 
@@ -79,10 +98,12 @@ python agent.py
 
 ```
 .
-├── agent.py           # Código principal do agente
-├── config.json        # Configuração de KPIs (exemplo)
-├── README.md          # Este arquivo
-└── requirements.txt   # Dependências do projeto
+├── agent.py                      # Código principal do agente
+├── processar_coordenadores.py    # Processador de dados tabulares
+├── exemplos.py                   # Exemplos avançados de uso
+├── config.json                   # Configuração de KPIs (exemplo)
+├── README.md                     # Este arquivo
+└── requirements.txt              # Dependências do projeto
 ```
 
 ## Classes Principais
@@ -212,6 +233,51 @@ with open('config.json', 'r') as f:
 
 agente = DataMeasurementAgent(config)
 ```
+
+## Processamento de Dados Tabulares
+
+O módulo `processar_coordenadores.py` permite analisar dados de múltiplos coordenadores/equipes de uma só vez.
+
+### Funcionalidades:
+
+- **Análise em Massa**: Processa dados de dezenas de coordenadores simultaneamente
+- **Relatório Consolidado**: Gera ranking e estatísticas gerais
+- **Identificação de Problemas**: Detecta automaticamente quem precisa de atenção
+- **Relatórios Individuais**: Detalha performance de cada coordenador
+- **Exportação JSON**: Salva todos os dados para análise posterior
+
+### Exemplo de Uso:
+
+```python
+from processar_coordenadores import processar_dados_coordenadores, gerar_relatorio_consolidado
+
+# Dados em formato tabular (TSV/CSV)
+dados_csv = """Coordenador\tAtendimento\t% Atendimento\t% Conversão\tTKM
+JOAO SILVA\t100\t100,00%\t2,5%\t5500
+MARIA SANTOS\t98\t98,00%\t1,8%\t4800"""
+
+# Processar
+relatorios = processar_dados_coordenadores(dados_csv)
+
+# Gerar relatório consolidado
+gerar_relatorio_consolidado(relatorios)
+```
+
+### Saída do Relatório:
+
+O relatório consolidado inclui:
+
+1. **Top Performers**: Os 10 coordenadores com melhor performance média
+2. **Coordenadores que Requerem Atenção**: Lista priorizada de quem precisa de suporte
+3. **Relatórios Individuais**: Análise detalhada com KPIs e planos de ação específicos
+4. **Exportação JSON**: Dados completos para análises customizadas
+
+### Métricas Suportadas:
+
+- **% Atendimento**: Taxa de atendimento (meta: 100%)
+- **% Consultas Motor**: Taxa de consultas ao sistema (meta: 67%)
+- **% Conversão**: Taxa de conversão de contratos (meta: 2.09%)
+- **TKM**: Tonelada por Quilômetro (meta: 5043)
 
 ## Contribuindo
 

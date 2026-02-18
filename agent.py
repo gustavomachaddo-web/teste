@@ -105,7 +105,11 @@ class DataMeasurementAgent:
         # Para KPIs inversos, valores menores são melhores
         if inverso:
             # Quanto menor o valor em relação à meta, melhor o desempenho
-            percentual_atingido = (meta / valor * 100) if valor > 0 else 200
+            # Se valor é 0 (perfeito para KPIs como erros), consideramos desempenho excelente
+            if valor == 0:
+                percentual_atingido = 200  # Valor alto para garantir status EXCELENTE
+            else:
+                percentual_atingido = (meta / valor * 100)
         else:
             # Quanto maior o valor em relação à meta, melhor o desempenho
             percentual_atingido = (valor / meta * 100)
@@ -319,11 +323,11 @@ def exemplo_uso():
     
     # Mensurar dados (valores reais do período)
     dados = {
-        'vendas_mensais': 85000,      # 85% da meta (menor que meta = não atingiu)
-        'satisfacao_cliente': 92,     # 102% da meta (maior que meta = excelente)
-        'taxa_conversao': 9,          # 60% da meta (muito abaixo)
-        'tempo_resposta': 20,         # INVERSO: 20h < 24h meta = 120% (excelente)
-        'retencao_clientes': 65       # 76% da meta (abaixo)
+        'vendas_mensais': 85000,
+        'satisfacao_cliente': 92,
+        'taxa_conversao': 9,
+        'tempo_resposta': 20,
+        'retencao_clientes': 65
     }
     
     # Processar medições
