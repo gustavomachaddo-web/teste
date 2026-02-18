@@ -4,6 +4,12 @@ Uma aplicação web moderna e intuitiva para gerenciamento de atividades e taref
 
 ## 🌟 Funcionalidades
 
+### Visualizações
+- 📊 **Visualização em Quadro**: Quadro Kanban com tarefas organizadas por status
+- 📈 **Análise e Dashboard**: Estatísticas detalhadas e gráficos de produtividade
+- 📅 **Linha do Tempo**: Visualização cronológica de tarefas por período
+
+### Gerenciamento de Tarefas
 - ✅ **Criação de Atividades**: Adicione novas tarefas com título, descrição, data de vencimento, prioridade e categoria
 - 📊 **Organização por Status**: Visualize tarefas organizadas em colunas (Pendente, Em Progresso, Concluída)
 - 🎯 **Níveis de Prioridade**: Defina prioridades (Alta, Média, Baixa) para suas atividades
@@ -11,6 +17,14 @@ Uma aplicação web moderna e intuitiva para gerenciamento de atividades e taref
 - 📅 **Datas de Vencimento**: Acompanhe prazos e visualize tarefas atrasadas
 - 🔍 **Filtros Avançados**: Filtre tarefas por prioridade e status
 - ✏️ **Edição e Exclusão**: Edite ou remova atividades facilmente
+
+### Análise e Produtividade
+- 📊 **Dashboard de Estatísticas**: Visualize métricas como total de tarefas, concluídas, pendentes e atrasadas
+- 📈 **Gráficos de Distribuição**: Gráficos de barras para status e prioridades
+- 💯 **Taxa de Conclusão**: Acompanhe sua produtividade em tempo real
+- ⚠️ **Alertas de Tarefas Atrasadas**: Identifique rapidamente tarefas que passaram do prazo
+
+### Recursos Técnicos
 - 💾 **Persistência Local**: Seus dados são salvos automaticamente no navegador
 - 📱 **Design Responsivo**: Interface adaptável para desktop, tablet e mobile
 - 🎨 **Interface Moderna**: Design limpo e profissional com animações suaves
@@ -21,32 +35,56 @@ Uma aplicação web moderna e intuitiva para gerenciamento de atividades e taref
 
 Não é necessária instalação! Basta abrir o arquivo `index.html` em seu navegador.
 
+### Navegação
+
+A aplicação possui três visualizações principais acessíveis através dos botões no topo:
+
+1. **📊 Quadro** - Visualização Kanban tradicional
+2. **📈 Análise** - Dashboard com estatísticas e gráficos
+3. **📅 Linha do Tempo** - Visualização cronológica
+
 ### Utilização
 
-1. **Adicionar uma Atividade**
-   - Clique no botão "+ Nova Atividade"
-   - Preencha os campos obrigatórios (título, prioridade, status)
-   - Adicione informações opcionais (descrição, data, categoria)
-   - Clique em "Salvar"
+#### Adicionar uma Atividade
+1. Clique no botão "+ Nova Atividade"
+2. Preencha os campos obrigatórios (título, prioridade, status)
+3. Adicione informações opcionais (descrição, data, categoria)
+4. Clique em "Salvar"
 
-2. **Visualizar Atividades**
-   - As atividades são organizadas em três colunas por status
-   - Cada card mostra título, descrição, prioridade e data de vencimento
-   - Contadores no topo de cada coluna mostram o número de tarefas
+#### Visualização em Quadro
+- As atividades são organizadas em três colunas por status
+- Cada card mostra título, descrição, prioridade e data de vencimento
+- Contadores no topo de cada coluna mostram o número de tarefas
+- Use os filtros para visualizar tarefas específicas por prioridade ou status
 
-3. **Editar uma Atividade**
-   - Clique no ícone de lápis (✏️) no card da tarefa
-   - Modifique os campos desejados
-   - Clique em "Salvar"
+#### Visualização de Análise
+- Acesse estatísticas gerais: total de tarefas, concluídas, em progresso, pendentes e atrasadas
+- Visualize a taxa de conclusão para acompanhar sua produtividade
+- Analise gráficos de distribuição por status e prioridade
+- Identifique rapidamente áreas que precisam de atenção
 
-4. **Excluir uma Atividade**
-   - Clique no ícone de lixeira (🗑️) no card da tarefa
-   - Confirme a exclusão
+#### Visualização de Linha do Tempo
+- Tarefas organizadas cronologicamente por período:
+  - ⚠️ **Atrasadas**: Tarefas que passaram do prazo
+  - 📅 **Hoje**: Tarefas com vencimento hoje
+  - 📆 **Esta Semana**: Tarefas dos próximos 7 dias
+  - 🗓️ **Próxima Semana**: Tarefas da semana seguinte
+  - 📋 **Mais Tarde**: Tarefas futuras
+  - 📭 **Sem Data Definida**: Tarefas sem prazo
 
-5. **Filtrar Atividades**
-   - Use os filtros na barra superior para visualizar:
-     - Todas as prioridades ou uma específica (Alta, Média, Baixa)
-     - Todos os status ou um específico (Pendente, Em Progresso, Concluída)
+#### Editar uma Atividade
+- Clique no ícone de lápis (✏️) no card da tarefa
+- Modifique os campos desejados
+- Clique em "Salvar"
+
+#### Excluir uma Atividade
+- Clique no ícone de lixeira (🗑️) no card da tarefa
+- Confirme a exclusão
+
+#### Filtrar Atividades (na visualização Quadro)
+- Use os filtros na barra superior para visualizar:
+  - Todas as prioridades ou uma específica (Alta, Média, Baixa)
+  - Todos os status ou um específico (Pendente, Em Progresso, Concluída)
 
 ## 📂 Estrutura do Projeto
 

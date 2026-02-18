@@ -13,6 +13,13 @@
             <p class="subtitle">Organize e planeje suas atividades</p>
         </header>
 
+        <!-- Navegação entre visualizações -->
+        <nav class="view-navigation">
+            <button class="nav-btn active" data-view="board">📊 Quadro</button>
+            <button class="nav-btn" data-view="analytics">📈 Análise</button>
+            <button class="nav-btn" data-view="timeline">📅 Linha do Tempo</button>
+        </nav>
+
         <div class="controls">
             <button id="addTaskBtn" class="btn btn-primary">+ Nova Atividade</button>
             <div class="filters">
@@ -54,6 +61,150 @@
                     <span class="task-count" id="completed-count">0</span>
                 </div>
                 <div class="tasks-container" id="completed-tasks"></div>
+            </div>
+        </div>
+
+        <!-- Seção de Análise -->
+        <div id="analyticsView" class="view-section" style="display: none;">
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="analytics-icon">📋</div>
+                    <div class="analytics-content">
+                        <h3 id="totalTasks">0</h3>
+                        <p>Total de Tarefas</p>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-icon">✅</div>
+                    <div class="analytics-content">
+                        <h3 id="completedTasks">0</h3>
+                        <p>Concluídas</p>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-icon">🔄</div>
+                    <div class="analytics-content">
+                        <h3 id="inProgressTasks">0</h3>
+                        <p>Em Progresso</p>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-icon">📝</div>
+                    <div class="analytics-content">
+                        <h3 id="pendingTasks">0</h3>
+                        <p>Pendentes</p>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-icon">⚠️</div>
+                    <div class="analytics-content">
+                        <h3 id="overdueTasks">0</h3>
+                        <p>Atrasadas</p>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-icon">📊</div>
+                    <div class="analytics-content">
+                        <h3 id="productivityRate">0%</h3>
+                        <p>Taxa de Conclusão</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analytics-charts">
+                <div class="chart-card">
+                    <h3>Distribuição por Status</h3>
+                    <div class="chart-bars" id="statusChart">
+                        <div class="chart-bar">
+                            <div class="bar-label">Pendente</div>
+                            <div class="bar-container">
+                                <div class="bar-fill pending-bar" style="width: 0%"></div>
+                                <span class="bar-value">0</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-label">Em Progresso</div>
+                            <div class="bar-container">
+                                <div class="bar-fill in-progress-bar" style="width: 0%"></div>
+                                <span class="bar-value">0</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-label">Concluída</div>
+                            <div class="bar-container">
+                                <div class="bar-fill completed-bar" style="width: 0%"></div>
+                                <span class="bar-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Distribuição por Prioridade</h3>
+                    <div class="chart-bars" id="priorityChart">
+                        <div class="chart-bar">
+                            <div class="bar-label">Alta</div>
+                            <div class="bar-container">
+                                <div class="bar-fill high-bar" style="width: 0%"></div>
+                                <span class="bar-value">0</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-label">Média</div>
+                            <div class="bar-container">
+                                <div class="bar-fill medium-bar" style="width: 0%"></div>
+                                <span class="bar-value">0</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-label">Baixa</div>
+                            <div class="bar-container">
+                                <div class="bar-fill low-bar" style="width: 0%"></div>
+                                <span class="bar-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Linha do Tempo -->
+        <div id="timelineView" class="view-section" style="display: none;">
+            <div class="timeline-container">
+                <div class="timeline-section" id="overdue-section">
+                    <h3 class="timeline-header">⚠️ Atrasadas</h3>
+                    <div class="timeline-tasks" id="overdue-timeline"></div>
+                </div>
+
+                <div class="timeline-section" id="today-section">
+                    <h3 class="timeline-header">📅 Hoje</h3>
+                    <div class="timeline-tasks" id="today-timeline"></div>
+                </div>
+
+                <div class="timeline-section" id="week-section">
+                    <h3 class="timeline-header">📆 Esta Semana</h3>
+                    <div class="timeline-tasks" id="week-timeline"></div>
+                </div>
+
+                <div class="timeline-section" id="next-week-section">
+                    <h3 class="timeline-header">🗓️ Próxima Semana</h3>
+                    <div class="timeline-tasks" id="next-week-timeline"></div>
+                </div>
+
+                <div class="timeline-section" id="later-section">
+                    <h3 class="timeline-header">📋 Mais Tarde</h3>
+                    <div class="timeline-tasks" id="later-timeline"></div>
+                </div>
+
+                <div class="timeline-section" id="no-date-section">
+                    <h3 class="timeline-header">📭 Sem Data Definida</h3>
+                    <div class="timeline-tasks" id="no-date-timeline"></div>
+                </div>
             </div>
         </div>
     </div>

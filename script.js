@@ -1,6 +1,7 @@
 // Estado da aplicação
 let tasks = [];
 let editingTaskId = null;
+let currentView = 'board'; // board, analytics, timeline
 
 // Constantes
 const TIME_MIDNIGHT = 'T00:00:00';
@@ -18,7 +19,7 @@ const filterStatus = document.getElementById('filterStatus');
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     loadTasks();
-    renderTasks();
+    renderCurrentView();
     setupEventListeners();
     setMinDate();
 });
@@ -31,6 +32,14 @@ function setupEventListeners() {
     taskForm.addEventListener('submit', handleTaskSubmit);
     filterPriority.addEventListener('change', renderTasks);
     filterStatus.addEventListener('change', renderTasks);
+
+    // Navegação entre visualizações
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const view = e.target.getAttribute('data-view');
+            switchView(view);
+        });
+    });
 
     // Fechar modal ao clicar fora
     window.addEventListener('click', (e) => {
@@ -111,7 +120,7 @@ function addTask(taskData) {
     
     tasks.push(task);
     saveTasks();
-    renderTasks();
+    renderCurrentView();
     showNotification('Atividade adicionada com sucesso!', 'success');
 }
 
@@ -125,7 +134,7 @@ function updateTask(taskId, taskData) {
             updatedAt: new Date().toISOString()
         };
         saveTasks();
-        renderTasks();
+        renderCurrentView();
         showNotification('Atividade atualizada com sucesso!', 'success');
     }
 }
@@ -135,7 +144,7 @@ function deleteTask(taskId) {
     if (confirm('Tem certeza que deseja excluir esta atividade?')) {
         tasks = tasks.filter(t => t.id !== taskId);
         saveTasks();
-        renderTasks();
+        renderCurrentView();
         showNotification('Atividade excluída com sucesso!', 'success');
     }
 }
@@ -391,3 +400,246 @@ function loadSampleData() {
     }
 }
 */
+
+// Navegação entre visualizações
+function switchView(view) {
+    currentView = view;
+
+    // Atualizar botões de navegação
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-view') === view) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Mostrar/ocultar seções
+    const board = document.querySelector('.board');
+    const controls = document.querySelector('.controls');
+    const analyticsView = document.getElementById('analyticsView');
+    const timelineView = document.getElementById('timelineView');
+
+    board.style.display = 'none';
+    controls.style.display = 'none';
+    analyticsView.style.display = 'none';
+    timelineView.style.display = 'none';
+
+    if (view === 'board') {
+        board.style.display = 'grid';
+        controls.style.display = 'flex';
+    } else if (view === 'analytics') {
+        analyticsView.style.display = 'block';
+        renderAnalytics();
+    } else if (view === 'timeline') {
+        timelineView.style.display = 'block';
+        renderTimeline();
+    }
+}
+
+function renderCurrentView() {
+    if (currentView === 'board') {
+        renderTasks();
+    } else if (currentView === 'analytics') {
+        renderAnalytics();
+    } else if (currentView === 'timeline') {
+        renderTimeline();
+    }
+}
+
+// Análise e Estatísticas
+function renderAnalytics() {
+    const total = tasks.length;
+    const completed = tasks.filter(t => t.status === 'completed').length;
+    const inProgress = tasks.filter(t => t.status === 'in-progress').length;
+    const pending = tasks.filter(t => t.status === 'pending').length;
+    const overdue = tasks.filter(t => t.dueDate && isOverdue(t.dueDate) && t.status !== 'completed').length;
+    
+    const productivityRate = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+    // Atualizar cards de estatísticas
+    document.getElementById('totalTasks').textContent = total;
+    document.getElementById('completedTasks').textContent = completed;
+    document.getElementById('inProgressTasks').textContent = inProgress;
+    document.getElementById('pendingTasks').textContent = pending;
+    document.getElementById('overdueTasks').textContent = overdue;
+    document.getElementById('productivityRate').textContent = productivityRate + '%';
+
+    // Gráfico de status
+    updateBarChart('statusChart', {
+        'Pendente': pending,
+        'Em Progresso': inProgress,
+        'Concluída': completed
+    }, total);
+
+    // Gráfico de prioridades
+    const highPriority = tasks.filter(t => t.priority === 'high').length;
+    const mediumPriority = tasks.filter(t => t.priority === 'medium').length;
+    const lowPriority = tasks.filter(t => t.priority === 'low').length;
+
+    updateBarChart('priorityChart', {
+        'Alta': highPriority,
+        'Média': mediumPriority,
+        'Baixa': lowPriority
+    }, total);
+}
+
+function updateBarChart(chartId, data, total) {
+    const chart = document.getElementById(chartId);
+    const bars = chart.querySelectorAll('.chart-bar');
+
+    bars.forEach((bar, index) => {
+        const label = bar.querySelector('.bar-label').textContent;
+        const value = data[label] || 0;
+        const percentage = total > 0 ? (value / total) * 100 : 0;
+
+        const barFill = bar.querySelector('.bar-fill');
+        const barValue = bar.querySelector('.bar-value');
+
+        barFill.style.width = percentage + '%';
+        barValue.textContent = value;
+    });
+}
+
+// Linha do Tempo
+function renderTimeline() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const todayEnd = new Date(today);
+    todayEnd.setDate(todayEnd.getDate() + 1);
+
+    const weekEnd = new Date(today);
+    weekEnd.setDate(weekEnd.getDate() + 7);
+
+    const nextWeekEnd = new Date(today);
+    nextWeekEnd.setDate(nextWeekEnd.getDate() + 14);
+
+    // Categorizar tarefas
+    const overdueTasks = [];
+    const todayTasks = [];
+    const weekTasks = [];
+    const nextWeekTasks = [];
+    const laterTasks = [];
+    const noDateTasks = [];
+
+    tasks.forEach(task => {
+        if (!task.dueDate) {
+            noDateTasks.push(task);
+        } else {
+            const dueDate = new Date(task.dueDate + TIME_MIDNIGHT);
+            dueDate.setHours(0, 0, 0, 0);
+
+            if (dueDate < today && task.status !== 'completed') {
+                overdueTasks.push(task);
+            } else if (dueDate.getTime() === today.getTime()) {
+                todayTasks.push(task);
+            } else if (dueDate > today && dueDate < weekEnd) {
+                weekTasks.push(task);
+            } else if (dueDate >= weekEnd && dueDate < nextWeekEnd) {
+                nextWeekTasks.push(task);
+            } else {
+                laterTasks.push(task);
+            }
+        }
+    });
+
+    // Renderizar cada seção
+    renderTimelineSection('overdue-timeline', overdueTasks, true);
+    renderTimelineSection('today-timeline', todayTasks, false);
+    renderTimelineSection('week-timeline', weekTasks, false);
+    renderTimelineSection('next-week-timeline', nextWeekTasks, false);
+    renderTimelineSection('later-timeline', laterTasks, false);
+    renderTimelineSection('no-date-timeline', noDateTasks, false);
+
+    // Ocultar seções vazias
+    hideEmptyTimelineSections();
+}
+
+function renderTimelineSection(containerId, tasks, isOverdue) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    if (tasks.length === 0) {
+        container.innerHTML = '<div class="timeline-empty">Nenhuma tarefa</div>';
+        return;
+    }
+
+    // Ordenar por data
+    tasks.sort((a, b) => {
+        if (!a.dueDate) return 1;
+        if (!b.dueDate) return -1;
+        return new Date(a.dueDate) - new Date(b.dueDate);
+    });
+
+    tasks.forEach(task => {
+        const taskElement = createTimelineTask(task, isOverdue);
+        container.appendChild(taskElement);
+    });
+}
+
+function createTimelineTask(task, isOverdue) {
+    const div = document.createElement('div');
+    div.className = `timeline-task priority-${task.priority}`;
+    if (isOverdue) {
+        div.classList.add('overdue');
+    }
+
+    const dueDateHtml = task.dueDate ? `
+        <span class="task-badge">📅 ${formatDate(task.dueDate)}</span>
+    ` : '';
+
+    const categoryHtml = task.category ? `
+        <span class="task-badge category-badge">${escapeHtml(task.category)}</span>
+    ` : '';
+
+    const statusLabels = {
+        'pending': '📝 Pendente',
+        'in-progress': '🔄 Em Progresso',
+        'completed': '✅ Concluída'
+    };
+
+    div.innerHTML = `
+        <div class="timeline-task-content">
+            <div class="timeline-task-title">${escapeHtml(task.title)}</div>
+            ${task.description ? `<div class="task-description">${escapeHtml(task.description)}</div>` : ''}
+            <div class="timeline-task-meta">
+                <span class="task-badge priority-badge ${task.priority}">
+                    ${getPriorityLabel(task.priority)}
+                </span>
+                <span class="task-badge">${statusLabels[task.status]}</span>
+                ${categoryHtml}
+                ${dueDateHtml}
+                ${isOverdue ? '<span class="task-badge" style="background: var(--danger-color); color: white;">⚠️ Atrasada</span>' : ''}
+            </div>
+        </div>
+        <div class="task-actions">
+            <button class="task-btn" onclick="openEditTaskModal('${task.id}')" title="Editar">✏️</button>
+            <button class="task-btn" onclick="deleteTask('${task.id}')" title="Excluir">🗑️</button>
+        </div>
+    `;
+
+    return div;
+}
+
+function hideEmptyTimelineSections() {
+    const sections = [
+        'overdue-section',
+        'today-section',
+        'week-section',
+        'next-week-section',
+        'later-section',
+        'no-date-section'
+    ];
+
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        const container = section.querySelector('.timeline-tasks');
+        
+        if (container.innerHTML.includes('Nenhuma tarefa')) {
+            section.style.display = 'none';
+        } else {
+            section.style.display = 'block';
+        }
+    });
+}
+
