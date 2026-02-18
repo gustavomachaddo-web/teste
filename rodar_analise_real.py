@@ -1,0 +1,126 @@
+"""
+Processar Dados Reais de Coordenadores
+Script para processar os dados fornecidos dos coordenadores
+"""
+
+from processar_coordenadores import processar_dados_coordenadores, gerar_relatorio_consolidado, gerar_relatorio_individual
+
+# Dados fornecidos pelo usuário
+dados_csv = """Coordenador	Transbordo	Atendimento	% Atendimento	Consulta Motor	% Consultas Motor	Encerramento até 10m	% Encerramento até 10m	Vendas	Contratos	Produção	% Conversão	TKM
+ANDERSON CAVALCANTI DA SILVA								1	1	1.558		1.558
+COORDENADOR PROJETO PARCERIAS								0	0			
+INTERINO - MINAS GERAIS I								5	5	12.365		2.473
+THIAGO MOREIRA SOARES								7	10	18.857		2.694
+ERNAUTON DENISAR ROLIM DE CASTRO SOBRINHO	230	230	100,00%	111	48,3%			0	0		0,00%	
+EZEQUIEL THEISEN GUTJAHR	291	291	100,00%	143	49,1%			6	10	59.047	2,06%	9.841
+CICERO ROMAO DE LIMA JUNIOR	446	446	100,00%	227	50,9%			9	14	13.439	2,02%	1.493
+SUELLEN CAROLINE FERNANDES MACEDO	943	943	100,00%	525	55,7%			14	22	75.400	1,48%	5.386
+ERIC DE BRITO REIS	745	745	100,00%	420	56,4%			13	18	31.358	1,74%	2.412
+BRUNA PASSOS GONCALVES	889	889	100,00%	507	57,0%			9	11	11.667	1,01%	1.296
+ANA ANGELICA QUIXABEIRA TAVARES	505	505	100,00%	289	57,2%			7	9	28.231	1,39%	4.033
+JEFFERSON WILLIAM DE MORAIS RIBEIRO	462	462	100,00%	268	58,0%			12	17	44.557	2,60%	3.713
+INTERINO - NORTE I	848	848	100,00%	492	58,0%			10	13	19.568	1,18%	1.957
+RAMON DE BRITO MACEDO	1.393	1.393	100,00%	818	58,7%			17	25	56.421	1,22%	3.319
+MONIQUE PEREIRA DOS SANTOS	473	473	100,00%	282	59,6%			4	11	121.169	0,85%	30.292
+JESSICA GOMES GENTILUOMO	531	531	100,00%	320	60,3%			4	11	20.203	0,75%	5.051
+BRUNO CESAR DE SOUZA GUERRA	985	985	100,00%	594	60,3%			17	27	92.281	1,73%	5.428
+ROJANE MARIA GANJAO	478	478	100,00%	289	60,5%			7	9	36.369	1,46%	5.196
+INTERINO - ITAJAI - SC	1.276	1.276	100,00%	774	60,7%			22	24	143.996	1,72%	6.545
+ALEXANDRA CARRUPT DE AZEVEDO PACHECO	659	659	100,00%	401	60,8%			14	28	42.861	2,12%	3.062
+DANIELE DA SILVA PENA	787	787	100,00%	484	61,5%			12	17	75.344	1,52%	6.279
+BRUNA RODRIGUES DA SILVA LIMA	423	423	100,00%	261	61,7%			13	21	70.972	3,07%	5.459
+NAYRA LORRANE OLIVEIRA ANDRADE	1.194	1.194	100,00%	739	61,9%			27	33	94.193	2,26%	3.489
+LUCAS SILVEIRA ARAUJO	614	614	100,00%	383	62,4%			9	12	120.443	1,47%	13.383
+INTERINO - MINAS GERAIS SUL	920	920	100,00%	576	62,6%			20	22	72.623	2,17%	3.631
+MARCELA OLINDA MOREIRA PINHEIRO PONTELO	1.082	1.082	100,00%	688	63,6%			21	36	94.451	1,94%	4.498
+MURILO AMARAL DE OLIVEIRA	705	705	100,00%	450	63,8%			4	9	29.260	0,57%	7.315
+NATHAN GABRIEL IARROCHESKI	634	634	100,00%	411	64,8%			12	26	89.528	1,89%	7.461
+CLEBER DE SALES TINI	1.196	1.196	100,00%	778	65,1%			22	27	119.711	1,84%	5.441
+DANIELE DE BARROS CONCEICAO	885	885	100,00%	578	65,3%			17	25	101.147	1,92%	5.950
+GABRIELA MARINHO CURTY	998	998	100,00%	652	65,3%			32	42	110.185	3,21%	3.443
+RAQUEL COELHO RIGHETTI MELINO	2.038	2.038	100,00%	1.342	65,8%			42	68	217.755	2,06%	5.185
+KARINA OLIVEIRA GOMES DA SILVA	1.073	1.073	100,00%	709	66,1%			19	20	47.778	1,77%	2.515
+GLAUBER LARANJEIRA DO NASCIMENTO	888	888	100,00%	601	67,7%			27	49	188.010	3,04%	6.963
+BARBARA GONZAGA DOS SANTOS	633	633	100,00%	431	68,1%			17	31	63.241	2,69%	3.720
+TATIANE CARINA OLIVEIRA SOUZA	1.487	1.487	100,00%	1.018	68,5%			24	33	184.327	1,61%	7.680
+INGRID GOMES MARCELINO	395	395	100,00%	271	68,6%			17	21	50.098	4,30%	2.947
+ALEX SANDRO DA SILVA	670	670	100,00%	461	68,8%			11	26	131.727	1,64%	11.975
+FERNANDA BASTOS MONTE	698	698	100,00%	483	69,2%			15	28	90.286	2,15%	6.019
+JOHN CRYSTIAN FARIA	830	830	100,00%	577	69,5%			15	16	81.713	1,81%	5.448
+NAYARA DA PENHA SILVA ALMEIDA	979	979	100,00%	685	70,0%			37	50	163.773	3,78%	4.426
+THIAGO SANTOS DE MOURA	1.234	1.234	100,00%	868	70,3%			40	54	136.735	3,24%	3.418
+VAGO - PRESIDENTE PRUDENTE	975	975	100,00%	693	71,1%			9	11	50.098	0,92%	5.566
+IVAN FRANCISCO KARL COSTA	893	893	100,00%	635	71,1%			20	31	112.212	2,24%	5.611
+CARINA DA SILVA SIMOES FARIAS	669	669	100,00%	481	71,9%			20	27	81.628	2,99%	4.081
+BRUNA CAROLINE PEREIRA DE SIQUEIRA	1.018	1.018	100,00%	732	71,9%			20	35	155.712	1,96%	7.786
+LEONARDO RANGEL DE AZEVEDO	981	981	100,00%	713	72,7%			22	35	131.644	2,24%	5.984
+BEATRIZ DOS SANTOS NUNES	393	393	100,00%	291	74,0%			10	12	17.899	2,54%	1.790
+EDUARDO ANDRE RUEBENICH KOLLING	539	539	100,00%	401	74,4%			10	12	53.424	1,86%	5.342
+MARIANA KITAMURA PRUDENTE	1.039	1.039	100,00%	776	74,7%			32	40	83.040	3,08%	2.595
+ANDRE VINICIUS BARCELLOS GUTERRES	382	382	100,00%	287	75,1%			4	5	47.164	1,05%	11.791
+RIVONIA SIQUEIRA DA SILVA	1.288	1.288	100,00%	973	75,5%			30	41	150.437	2,33%	5.015
+JAMILE SANTOS SOUZA	738	738	100,00%	561	76,0%			30	52	171.320	4,07%	5.711
+CLEYTON MENDES COLIM	402	402	100,00%	307	76,4%			18	22	73.113	4,48%	4.062
+MERCIA MEZALINA ALCANTARA CAMPOS DE SILVEIRA	389	389	100,00%	307	78,9%			4	6	5.397	1,03%	1.349
+LUCAS LEANDRO DE SENA LOPES	451	451	100,00%	360	79,8%			8	12	55.365	1,77%	6.921
+VANESSA ALVES DA SILVA	1.143	1.143	100,00%	915	80,1%			25	29	145.254	2,19%	5.810
+LUIZ FLAVIO LADISLAU	708	708	100,00%	568	80,2%			20	24	95.472	2,82%	4.774
+ANA LUCIA ROSA CAMPANER	1.043	1.043	100,00%	855	82,0%			17	30	102.952	1,63%	6.056
+NICOLE LANAI BRAGA	506	506	100,00%	432	85,4%			12	23	56.142	2,37%	4.679
+Total	45.074	45.074	100,00%	30.193	67,0%			942	1.378	4.750.920	2,09%	5.043"""
+
+print("\n" + "="*100)
+print("PROCESSAMENTO DE DADOS REAIS DE COORDENADORES")
+print("="*100)
+
+# Processar dados
+print("\nProcessando dados dos coordenadores...")
+relatorios = processar_dados_coordenadores(dados_csv)
+print(f"✓ {len(relatorios)} coordenadores processados com sucesso")
+
+# Gerar relatório consolidado
+gerar_relatorio_consolidado(relatorios)
+
+# Mostrar alguns relatórios individuais detalhados
+print("\n\n" + "="*100)
+print("RELATÓRIOS INDIVIDUAIS DETALHADOS - TOP 3 E BOTTOM 3")
+print("="*100)
+
+# Top 3 performers
+print("\n" + "="*100)
+print("TOP 3 MELHORES PERFORMANCES")
+print("="*100)
+
+top_3 = sorted(relatorios, key=lambda x: x['resumo']['media_atingimento'], reverse=True)[:3]
+for i, relatorio in enumerate(top_3, 1):
+    print(f"\n{'='*100}")
+    print(f"#{i} - {relatorio['coordenador']}")
+    print('='*100)
+    gerar_relatorio_individual(relatorio)
+
+# Bottom 3 que precisam de mais atenção
+print("\n\n" + "="*100)
+print("TOP 3 QUE REQUEREM MAIS ATENÇÃO")
+print("="*100)
+
+bottom_3 = sorted(relatorios, key=lambda x: x['resumo']['media_atingimento'])[:3]
+for i, relatorio in enumerate(bottom_3, 1):
+    print(f"\n{'='*100}")
+    print(f"#{i} - {relatorio['coordenador']}")
+    print('='*100)
+    gerar_relatorio_individual(relatorio)
+
+# Exportar todos para JSON
+import json
+import os
+import tempfile
+
+output_file = os.path.join(tempfile.gettempdir(), 'relatorio_coordenadores_real.json')
+with open(output_file, 'w', encoding='utf-8') as f:
+    json.dump(relatorios, f, indent=2, ensure_ascii=False)
+
+print(f"\n\n{'='*100}")
+print(f"✓ Relatório completo exportado para: {output_file}")
+print(f"✓ Total de {len(relatorios)} coordenadores analisados")
+print(f"✓ Arquivo JSON contém dados detalhados de todos os coordenadores")
+print("="*100)
