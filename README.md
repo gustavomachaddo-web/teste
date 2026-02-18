@@ -51,7 +51,7 @@ Não é necessária instalação! Basta abrir o arquivo `index.html` em seu nave
 ## 📂 Estrutura do Projeto
 
 ```
-teste/
+agenda-atividades/
 ├── index.html      # Estrutura HTML da aplicação
 ├── styles.css      # Estilos e design visual
 ├── script.js       # Lógica e funcionalidades JavaScript

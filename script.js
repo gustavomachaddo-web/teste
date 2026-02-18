@@ -248,7 +248,7 @@ function updateTaskCounts(pending, inProgress, completed) {
 
 // Utilitários
 function generateId() {
-    return 'task-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+    return 'task-' + Date.now() + '-' + Math.random().toString(36).substring(2, 11);
 }
 
 function formatDate(dateString) {
@@ -260,7 +260,7 @@ function isOverdue(dueDate) {
     if (!dueDate) return false;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const due = new Date(dueDate);
+    const due = new Date(dueDate + 'T00:00:00');
     due.setHours(0, 0, 0, 0);
     return due < today;
 }
