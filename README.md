@@ -11,6 +11,8 @@ Este projeto implementa um agente inteligente que pode mensurar dados, calcular 
 - **Relatórios**: Gera relatórios detalhados em formato console e JSON
 - **Processamento de Dados Tabulares**: Analisa dados de múltiplos coordenadores/equipes com relatórios consolidados
 - **Suporte a KPIs Inversos**: Métricas onde valores menores são melhores
+- **Consulta de Indicadores**: Visualização fácil de todos os indicadores configurados e medições
+- **Exportação de Dados**: Exporta indicadores e medições para JSON
 
 ## Instalação
 
@@ -25,6 +27,40 @@ pip install -r requirements.txt
 ```
 
 ## Uso
+
+### Consultar Indicadores e Medições
+
+Para visualizar os indicadores configurados e suas medições:
+
+```bash
+# Modo interativo (menu)
+python consultar_indicadores.py
+
+# Modo automático (exibe tudo)
+python consultar_indicadores.py --auto
+```
+
+Este script permite:
+- Ver todos os indicadores (KPIs) configurados
+- Ver exemplos de medições com status
+- Aprender como adicionar novas medições
+
+### Exportar Indicadores para JSON
+
+Para exportar todos os indicadores e medições para um arquivo JSON:
+
+```bash
+# Exporta para indicadores_e_medicoes.json
+python exportar_indicadores.py
+
+# Especificar arquivo de saída
+python exportar_indicadores.py meu_arquivo.json
+```
+
+O arquivo JSON gerado contém:
+- Lista completa de indicadores com metas e descrições
+- Medições de exemplo com status
+- Resumo estatístico
 
 ### Uso Rápido - Processar Dados de Coordenadores
 
@@ -97,6 +133,8 @@ python agent.py
 ```
 .
 ├── agent.py                      # Código principal do agente
+├── consultar_indicadores.py      # Script para consultar indicadores e medições
+├── exportar_indicadores.py       # Script para exportar indicadores para JSON
 ├── processar_coordenadores.py    # Processador de dados tabulares
 ├── exemplos.py                   # Exemplos avançados de uso
 ├── config.json                   # Configuração de KPIs (exemplo)
