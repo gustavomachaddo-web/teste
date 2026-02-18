@@ -41,8 +41,6 @@ Este script irá:
 - Identificar coordenadores que requerem atenção
 - Exportar relatório completo em JSON
 
-## Uso
-
 ### Exemplo Básico
 
 ```python

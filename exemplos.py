@@ -8,6 +8,8 @@ Este exemplo mostra como:
 """
 
 import json
+import os
+import tempfile
 from agent import DataMeasurementAgent
 
 
@@ -120,7 +122,7 @@ def exemplo_exportacao_json():
     agente.mensurar_dados(dados)
     
     # Exportar para JSON
-    arquivo_saida = '/tmp/relatorio_producao.json'
+    arquivo_saida = os.path.join(tempfile.gettempdir(), 'relatorio_producao.json')
     agente.exportar_json(arquivo_saida)
     
     print(f"\n✓ Relatório exportado com sucesso!")
@@ -179,4 +181,4 @@ if __name__ == '__main__':
     print("\n" + "="*80)
     print("EXEMPLOS CONCLUÍDOS!")
     print("="*80)
-    print("\nConfira os arquivos JSON gerados em /tmp/")
+    print(f"\nConfira os arquivos JSON gerados em {tempfile.gettempdir()}")

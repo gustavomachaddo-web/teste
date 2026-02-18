@@ -5,8 +5,14 @@ Analisa dados tabulares de performance e gera relatórios com plano de ação
 
 import csv
 import json
+import os
+import tempfile
 from agent import DataMeasurementAgent
 from typing import List, Dict, Any
+
+
+# Constantes para filtros de coordenadores
+COORDINATOR_EXCLUSION_KEYWORDS = ['VAGO', 'INTERINO', 'PROJETO', 'TOTAL', 'COORDENADOR']
 
 
 def parse_percentage(value: str) -> float:
@@ -83,12 +89,8 @@ def processar_dados_coordenadores(dados_csv: str) -> List[Dict[str, Any]]:
             
         coordenador = campos[0].strip()
         
-        # Ignorar linhas totais ou vazias
-        if not coordenador or coordenador.lower() in ['total', 'coordenador']:
-            continue
-        
-        # Ignorar coordenadores sem dados significativos
-        if 'VAGO' in coordenador.upper() or 'INTERINO' in coordenador.upper() or 'PROJETO' in coordenador.upper():
+        # Ignorar coordenadores sem dados significativos ou especiais
+        if not coordenador or any(keyword in coordenador.upper() for keyword in COORDINATOR_EXCLUSION_KEYWORDS):
             continue
         
         # Extrair KPIs
@@ -336,7 +338,7 @@ NICOLE LANAI BRAGA	506	506	100,00%	432	85,4%			12	23	56.142	2,37%	4.679"""
         gerar_relatorio_individual(necessita_atencao[0])
     
     # Exportar todos para JSON
-    output_file = '/tmp/relatorio_coordenadores_completo.json'
+    output_file = os.path.join(tempfile.gettempdir(), 'relatorio_coordenadores_completo.json')
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(relatorios, f, indent=2, ensure_ascii=False)
     

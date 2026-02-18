@@ -6,10 +6,16 @@ e fornece recomendações de plano de ação baseadas nos resultados.
 """
 
 import json
+import os
+import tempfile
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 from dataclasses import dataclass, asdict
 from enum import Enum
+
+
+# Constantes
+PERFECT_INVERSE_KPI_SCORE = 200.0  # Score para KPIs inversos com valor zero (desempenho perfeito)
 
 
 class KPIStatus(Enum):
@@ -107,7 +113,7 @@ class DataMeasurementAgent:
             # Quanto menor o valor em relação à meta, melhor o desempenho
             # Se valor é 0 (perfeito para KPIs como erros), consideramos desempenho excelente
             if valor == 0:
-                percentual_atingido = 200  # Valor alto para garantir status EXCELENTE
+                percentual_atingido = PERFECT_INVERSE_KPI_SCORE
             else:
                 percentual_atingido = (meta / valor * 100)
         else:
@@ -337,7 +343,8 @@ def exemplo_uso():
     agente.imprimir_relatorio()
     
     # Exportar para JSON
-    agente.exportar_json('/tmp/relatorio_kpis.json')
+    output_file = os.path.join(tempfile.gettempdir(), 'relatorio_kpis.json')
+    agente.exportar_json(output_file)
 
 
 if __name__ == '__main__':
