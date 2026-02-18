@@ -34,11 +34,18 @@ config = {
     'kpis': {
         'vendas_mensais': {
             'meta': 100000,
-            'descricao': 'Meta de vendas mensais em R$'
+            'descricao': 'Meta de vendas mensais em R$',
+            'inverso': False
         },
         'satisfacao_cliente': {
             'meta': 90,
-            'descricao': 'Score de satisfação do cliente (%)'
+            'descricao': 'Score de satisfação do cliente (%)',
+            'inverso': False
+        },
+        'tempo_resposta': {
+            'meta': 24,
+            'descricao': 'Tempo médio de resposta em horas',
+            'inverso': True  # Valores menores são melhores
         }
     }
 }
@@ -49,7 +56,8 @@ agente = DataMeasurementAgent(config)
 # Mensurar dados
 dados = {
     'vendas_mensais': 85000,
-    'satisfacao_cliente': 92
+    'satisfacao_cliente': 92,
+    'tempo_resposta': 18  # Menor que a meta = melhor
 }
 
 agente.mensurar_dados(dados)
@@ -85,13 +93,14 @@ Classe principal que gerencia a mensuração de dados e KPIs.
 
 **Métodos principais:**
 
-- `definir_kpi(nome, meta, descricao)`: Define um novo KPI
+- `definir_kpi(nome, meta, descricao, inverso)`: Define um novo KPI. Use `inverso=True` para KPIs onde valores menores são melhores (ex: erros, tempo de resposta)
 - `mensurar_kpi(nome, valor)`: Mensura um KPI específico
 - `mensurar_dados(dados)`: Mensura múltiplos KPIs de uma vez
 - `gerar_plano_acao()`: Gera plano de ação baseado nos resultados
 - `gerar_relatorio()`: Gera relatório completo
 - `imprimir_relatorio()`: Imprime relatório formatado
 - `exportar_json(caminho)`: Exporta relatório para JSON
+- `limpar_resultados()`: Limpa todas as medições e planos de ação
 
 ### `KPIResult`
 
@@ -125,6 +134,25 @@ O agente classifica automaticamente os KPIs baseado no percentual da meta atingi
 - **Atenção** (60-79%): Requer atenção e melhorias
 - **Crítico** (<60%): Requer ação urgente
 
+### KPIs Inversos
+
+Alguns KPIs são melhores quando têm valores menores (ex: tempo de resposta, taxa de erros, churn rate). Para estes casos, use o parâmetro `inverso: True` na configuração:
+
+```python
+# Exemplo de KPI inverso
+agente.definir_kpi('tempo_resposta', meta=24, descricao='Tempo médio em horas', inverso=True)
+
+# Com um valor de 18 horas (menor que 24), o cálculo será:
+# percentual_atingido = (24 / 18 * 100) = 133% → Status: EXCELENTE
+```
+
+KPIs comuns que devem usar `inverso=True`:
+- Tempo de resposta
+- Taxa de erros
+- Taxa de cancelamento (churn rate)
+- Custos operacionais
+- Tempo de inatividade (downtime)
+
 ## Planos de Ação
 
 O agente gera automaticamente planos de ação com:
@@ -146,7 +174,11 @@ O relatório inclui:
 ### Adicionar Novos KPIs
 
 ```python
-agente.definir_kpi('novo_kpi', meta=50, descricao='Descrição do KPI')
+# KPI normal (valores maiores são melhores)
+agente.definir_kpi('novo_kpi', meta=50, descricao='Descrição do KPI', inverso=False)
+
+# KPI inverso (valores menores são melhores)
+agente.definir_kpi('tempo_processamento', meta=10, descricao='Tempo em segundos', inverso=True)
 ```
 
 ### Configuração via JSON
@@ -158,7 +190,13 @@ Crie um arquivo `config.json`:
   "kpis": {
     "nome_kpi": {
       "meta": 100,
-      "descricao": "Descrição do KPI"
+      "descricao": "Descrição do KPI",
+      "inverso": false
+    },
+    "tempo_resposta": {
+      "meta": 24,
+      "descricao": "Tempo de resposta em horas",
+      "inverso": true
     }
   }
 }

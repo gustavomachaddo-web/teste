@@ -2,35 +2,43 @@
   "kpis": {
     "vendas_mensais": {
       "meta": 100000,
-      "descricao": "Meta de vendas mensais em R$"
+      "descricao": "Meta de vendas mensais em R$",
+      "inverso": false
     },
     "satisfacao_cliente": {
       "meta": 90,
-      "descricao": "Score de satisfação do cliente (%)"
+      "descricao": "Score de satisfação do cliente (%)",
+      "inverso": false
     },
     "taxa_conversao": {
       "meta": 15,
-      "descricao": "Taxa de conversão de leads (%)"
+      "descricao": "Taxa de conversão de leads (%)",
+      "inverso": false
     },
     "tempo_resposta": {
       "meta": 24,
-      "descricao": "Tempo médio de resposta em horas"
+      "descricao": "Tempo médio de resposta em horas",
+      "inverso": true
     },
     "retencao_clientes": {
       "meta": 85,
-      "descricao": "Taxa de retenção de clientes (%)"
+      "descricao": "Taxa de retenção de clientes (%)",
+      "inverso": false
     },
     "nps": {
       "meta": 70,
-      "descricao": "Net Promoter Score"
+      "descricao": "Net Promoter Score",
+      "inverso": false
     },
     "ticket_medio": {
       "meta": 500,
-      "descricao": "Valor médio do ticket em R$"
+      "descricao": "Valor médio do ticket em R$",
+      "inverso": false
     },
     "churn_rate": {
       "meta": 5,
-      "descricao": "Taxa de cancelamento (%)"
+      "descricao": "Taxa de cancelamento (%)",
+      "inverso": true
     }
   }
 }

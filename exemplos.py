@@ -141,9 +141,9 @@ def exemplo_cenario_critico():
     
     config = {
         'kpis': {
-            'disponibilidade_sistema': {'meta': 99.9, 'descricao': 'Uptime (%)'},
-            'tempo_resposta_api': {'meta': 200, 'descricao': 'Tempo de resposta (ms)'},
-            'erros_aplicacao': {'meta': 10, 'descricao': 'Erros por hora'}
+            'disponibilidade_sistema': {'meta': 99.9, 'descricao': 'Uptime (%)', 'inverso': False},
+            'tempo_resposta_api': {'meta': 200, 'descricao': 'Tempo de resposta (ms)', 'inverso': True},
+            'erros_aplicacao': {'meta': 10, 'descricao': 'Erros por hora', 'inverso': True}
         }
     }
     
@@ -152,7 +152,7 @@ def exemplo_cenario_critico():
     # Dados críticos
     dados_criticos = {
         'disponibilidade_sistema': 95.5,  # Muito abaixo da meta
-        'tempo_resposta_api': 180,         # Bom
+        'tempo_resposta_api': 180,         # Bom (menor que meta)
         'erros_aplicacao': 4               # Excelente (menos erros é melhor)
     }
     

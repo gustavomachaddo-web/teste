@@ -66,7 +66,7 @@ class DataMeasurementAgent:
         self.resultados_kpis: List[KPIResult] = []
         self.planos_acao: List[ActionPlan] = []
     
-    def definir_kpi(self, nome: str, meta: float, descricao: str = ""):
+    def definir_kpi(self, nome: str, meta: float, descricao: str = "", inverso: bool = False):
         """
         Define um novo KPI
         
@@ -74,10 +74,15 @@ class DataMeasurementAgent:
             nome: Nome do KPI
             meta: Meta a ser atingida
             descricao: Descrição do KPI
+            inverso: Se True, valores menores são melhores (ex: erros, tempo de resposta)
         """
+        if meta <= 0:
+            raise ValueError(f"Meta deve ser maior que zero. Recebido: {meta}")
+        
         self.kpis_definidos[nome] = {
             'meta': meta,
-            'descricao': descricao
+            'descricao': descricao,
+            'inverso': inverso
         }
     
     def mensurar_kpi(self, nome: str, valor: float) -> KPIResult:
@@ -95,7 +100,15 @@ class DataMeasurementAgent:
             raise ValueError(f"KPI '{nome}' não está definido")
         
         meta = self.kpis_definidos[nome]['meta']
-        percentual_atingido = (valor / meta * 100) if meta > 0 else 0
+        inverso = self.kpis_definidos[nome].get('inverso', False)
+        
+        # Para KPIs inversos, valores menores são melhores
+        if inverso:
+            # Quanto menor o valor em relação à meta, melhor o desempenho
+            percentual_atingido = (meta / valor * 100) if valor > 0 else 200
+        else:
+            # Quanto maior o valor em relação à meta, melhor o desempenho
+            percentual_atingido = (valor / meta * 100)
         
         # Determina o status baseado no percentual atingido
         if percentual_atingido >= 100:
@@ -261,7 +274,7 @@ class DataMeasurementAgent:
             json.dump(relatorio, f, indent=2, ensure_ascii=False)
         print(f"Relatório exportado para: {caminho}")
     
-    def limpar_medicoes(self):
+    def limpar_resultados(self):
         """Limpa todas as medições e planos de ação"""
         self.resultados_kpis = []
         self.planos_acao = []
@@ -275,23 +288,28 @@ def exemplo_uso():
         'kpis': {
             'vendas_mensais': {
                 'meta': 100000,
-                'descricao': 'Meta de vendas mensais em R$'
+                'descricao': 'Meta de vendas mensais em R$',
+                'inverso': False
             },
             'satisfacao_cliente': {
                 'meta': 90,
-                'descricao': 'Score de satisfação do cliente (%)'
+                'descricao': 'Score de satisfação do cliente (%)',
+                'inverso': False
             },
             'taxa_conversao': {
                 'meta': 15,
-                'descricao': 'Taxa de conversão de leads (%)'
+                'descricao': 'Taxa de conversão de leads (%)',
+                'inverso': False
             },
             'tempo_resposta': {
                 'meta': 24,
-                'descricao': 'Tempo médio de resposta em horas'
+                'descricao': 'Tempo médio de resposta em horas',
+                'inverso': True
             },
             'retencao_clientes': {
                 'meta': 85,
-                'descricao': 'Taxa de retenção de clientes (%)'
+                'descricao': 'Taxa de retenção de clientes (%)',
+                'inverso': False
             }
         }
     }
@@ -301,11 +319,11 @@ def exemplo_uso():
     
     # Mensurar dados (valores reais do período)
     dados = {
-        'vendas_mensais': 85000,      # 85% da meta
-        'satisfacao_cliente': 92,     # 102% da meta
-        'taxa_conversao': 9,          # 60% da meta
-        'tempo_resposta': 20,         # 83% da meta
-        'retencao_clientes': 65       # 76% da meta
+        'vendas_mensais': 85000,      # 85% da meta (menor que meta = não atingiu)
+        'satisfacao_cliente': 92,     # 102% da meta (maior que meta = excelente)
+        'taxa_conversao': 9,          # 60% da meta (muito abaixo)
+        'tempo_resposta': 20,         # INVERSO: 20h < 24h meta = 120% (excelente)
+        'retencao_clientes': 65       # 76% da meta (abaixo)
     }
     
     # Processar medições
